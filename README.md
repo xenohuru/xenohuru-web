@@ -6,6 +6,7 @@
 [![PWA](https://img.shields.io/badge/PWA-ready-5A0FC8.svg)](manifest.json)
 [![OpenStreetMap](https://img.shields.io/badge/Maps-OpenStreetMap-7EBC6F.svg)](https://www.openstreetmap.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38bdf8.svg)](https://tailwindcss.com/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/efc193ca-0cad-4402-bedb-3be31b218d31/deploy-status)](https://app.netlify.com/projects/twenzetusafari/deploys)
 
 **Backend API:** [twenzetu-safari](https://github.com/cleven12/twenzetu-safari)
 
