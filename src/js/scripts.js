@@ -1,5 +1,5 @@
 /**
- * scripts.js — Shared JavaScript for Twenzetu Safari Web
+ * scripts.js — Shared JavaScript for Xenohuru Web
  * Loaded on every page via defer.
  */
 
@@ -56,17 +56,25 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileDrawer?.classList.add('active');
     mobileOverlay?.classList.add('active');
     mobileOverlay?.classList.remove('hidden');
+    mobileToggle?.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   };
   const closeNav = () => {
     mobileDrawer?.classList.remove('active');
     mobileOverlay?.classList.remove('active');
+    mobileToggle?.setAttribute('aria-expanded', 'false');
     setTimeout(() => mobileOverlay?.classList.add('hidden'), 300);
     document.body.style.overflow = '';
   };
+  
   mobileToggle?.addEventListener('click', openNav);
   mobileClose?.addEventListener('click', closeNav);
   mobileOverlay?.addEventListener('click', closeNav);
+  
+  // Close menu when clicking on nav links
+  document.querySelectorAll('#mobile-drawer a').forEach(link => {
+    link.addEventListener('click', closeNav);
+  });
 
   /* ─── Active nav link ─── */
   const curPath = window.location.pathname;
