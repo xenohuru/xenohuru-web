@@ -46,45 +46,39 @@ document.addEventListener('DOMContentLoaded', () => {
     onNavScroll();
   }
 
-  /* ─── Mobile nav drawer ─── */
-  const mobileDrawer = document.getElementById('mobile-drawer');
-  const mobileOverlay = document.getElementById('mobile-overlay');
-  const mobileToggle = document.getElementById('mobile-toggle');
-  const mobileClose = document.getElementById('mobile-close');
+// Mobile Menu Toggle
+const mobileToggle = document.getElementById('mobile-toggle');
+const mobileClose = document.getElementById('mobile-close');
+const mobileDrawer = document.getElementById('mobile-drawer');
+const mobileOverlay = document.getElementById('mobile-overlay');
 
-  const openNav = () => {
-    if (!mobileDrawer || !mobileOverlay) return;
-    mobileOverlay.classList.remove('hidden');
-    // Force reflow to ensure hidden class is removed before adding active
-    void mobileOverlay.offsetWidth;
-    mobileDrawer.classList.add('active');
-    mobileOverlay.classList.add('active');
-    mobileToggle?.setAttribute('aria-expanded', 'true');
-    mobileDrawer?.setAttribute('aria-hidden', 'false');
-    mobileOverlay?.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = 'hidden';
-  };
-  
-  const closeNav = () => {
-    if (!mobileDrawer || !mobileOverlay) return;
-    mobileDrawer.classList.remove('active');
-    mobileOverlay.classList.remove('active');
-    mobileToggle?.setAttribute('aria-expanded', 'false');
-    mobileDrawer?.setAttribute('aria-hidden', 'true');
-    setTimeout(() => {
-      mobileOverlay.classList.add('hidden');
-    }, 300);
-    document.body.style.overflow = '';
-  };
-  
-  mobileToggle?.addEventListener('click', openNav);
-  mobileClose?.addEventListener('click', closeNav);
-  mobileOverlay?.addEventListener('click', closeNav);
-  
-  // Close menu when clicking on nav links
-  document.querySelectorAll('#mobile-drawer a').forEach(link => {
-    link.addEventListener('click', closeNav);
-  });
+function openMobileMenu() {
+  mobileDrawer.classList.add('active');
+  mobileOverlay.classList.add('active');
+  mobileOverlay.classList.remove('hidden'); // Remove hidden if present
+  mobileDrawer.setAttribute('aria-hidden', 'false');
+  mobileToggle.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden'; // Prevent scroll
+}
+
+function closeMobileMenu() {
+  mobileDrawer.classList.remove('active');
+  mobileOverlay.classList.remove('active');
+  mobileDrawer.setAttribute('aria-hidden', 'true');
+  mobileToggle.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = ''; // Restore scroll
+}
+
+mobileToggle.addEventListener('click', openMobileMenu);
+mobileClose.addEventListener('click', closeMobileMenu);
+mobileOverlay.addEventListener('click', closeMobileMenu);
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileDrawer.classList.contains('active')) {
+    closeMobileMenu();
+  }
+});
 
   /* ─── Active nav link ─── */
   const curPath = window.location.pathname;
