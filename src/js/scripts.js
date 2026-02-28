@@ -53,17 +53,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileClose = document.getElementById('mobile-close');
 
   const openNav = () => {
-    mobileDrawer?.classList.add('active');
-    mobileOverlay?.classList.add('active');
-    mobileOverlay?.classList.remove('hidden');
+    if (!mobileDrawer || !mobileOverlay) return;
+    mobileOverlay.classList.remove('hidden');
+    // Force reflow to ensure hidden class is removed before adding active
+    void mobileOverlay.offsetWidth;
+    mobileDrawer.classList.add('active');
+    mobileOverlay.classList.add('active');
     mobileToggle?.setAttribute('aria-expanded', 'true');
+    mobileDrawer?.setAttribute('aria-hidden', 'false');
+    mobileOverlay?.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = 'hidden';
   };
+  
   const closeNav = () => {
-    mobileDrawer?.classList.remove('active');
-    mobileOverlay?.classList.remove('active');
+    if (!mobileDrawer || !mobileOverlay) return;
+    mobileDrawer.classList.remove('active');
+    mobileOverlay.classList.remove('active');
     mobileToggle?.setAttribute('aria-expanded', 'false');
-    setTimeout(() => mobileOverlay?.classList.add('hidden'), 300);
+    mobileDrawer?.setAttribute('aria-hidden', 'true');
+    setTimeout(() => {
+      mobileOverlay.classList.add('hidden');
+    }, 300);
     document.body.style.overflow = '';
   };
   

@@ -85,10 +85,16 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+  will-change: opacity;
 }
 #mobile-overlay.active {
   opacity: 1;
-  pointer-events: all;
+  pointer-events: auto;
+}
+#mobile-overlay.hidden {
+  display: none !important;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ─── Active nav link ─── */
@@ -620,14 +626,22 @@ body {
     font-size: 0.65rem;
     padding: 4px 10px;
   }
-  /* Mobile drawer optimization */
+  /* Mobile drawer optimization - responsive width */
   #mobile-drawer {
-    width: 100%;
-    max-width: 320px;
+    width: 280px;
+    max-width: 85vw;
   }
   /* Smaller language switcher on mobile */
   .lang-switcher select {
     font-size: 0.65rem;
     padding: 3px 24px 3px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small devices - reduce drawer width further */
+  #mobile-drawer {
+    width: 240px;
+    max-width: 75vw;
   }
 }
