@@ -1,5 +1,5 @@
 /**
- * mockdata.js — Twenzetu Safari offline mock data
+ * mockdata.js — Xenohuru offline mock data
  * Mirrors the Django REST API response shapes from /api/v1/
  * Used as fallback when the API is not available.
  *

@@ -1,6 +1,6 @@
 # Terms of Use
 
-**Twenzetu Safari** — Open Source Tourism Information Platform for Tanzania
+**Xenohuru** — Open Source Tourism Information Platform for Tanzania
 
 ## 1. Acceptance of Terms
 
@@ -8,7 +8,7 @@ By using this application, you agree to these terms. If you do not agree, please
 
 ## 2. Purpose
 
-Twenzetu Safari is a free, open source platform that provides accurate information about tourist attractions in Tanzania. It is not a commercial booking or travel agency service.
+Xenohuru is a free, open source platform that provides accurate information about tourist attractions in Tanzania. It is not a commercial booking or travel agency service.
 
 ## 3. Information Accuracy
 

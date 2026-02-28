@@ -1,5 +1,5 @@
 // ============================================================
-// Twenzetu Safari — Service Worker (sw.js)
+// Xenohuru — Service Worker (sw.js)
 // Strategy: Cache-first for same-origin, Network-first for
 //           cross-origin, Network-only (with offline JSON) for API
 // ============================================================

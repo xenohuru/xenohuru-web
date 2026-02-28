@@ -1,6 +1,6 @@
 # Contributors
 
-Thank you for considering contributing to **Twenzetu Safari** — an open-source Tanzania tourism guide built for travellers, developers, and the community. 🇹🇿
+Thank you for considering contributing to **Xenohuru** — an open-source Tanzania tourism guide built for travellers, developers, and the community. 🇹🇿
 
 ---
 
@@ -19,7 +19,7 @@ We welcome all kinds of contributions — code, content, bug reports, design, an
 ### 1. Fork & Clone
 
 ```bash
-git clone https://github.com/cleven12/twenzetu-safari-web.git
+git clone https://github.com/xenohuru/xenohuru-web.git
 cd twenzetu-safari-web
 ```
 
@@ -67,7 +67,7 @@ Push your branch and open a PR against `main`. Describe:
 
 ## Reporting Bugs
 
-Open an issue on [GitHub Issues](https://github.com/cleven12/twenzetu-safari-web/issues) and include:
+Open an issue on [GitHub Issues](https://github.com/xenohuru/xenohuru-web/issues) and include:
 
 - Steps to reproduce
 - Expected vs actual behaviour
@@ -78,7 +78,7 @@ Open an issue on [GitHub Issues](https://github.com/cleven12/twenzetu-safari-web
 
 ## Suggesting Features
 
-Open a [GitHub Discussion](https://github.com/cleven12/twenzetu-safari-web/discussions) or issue labelled `enhancement`. Describe the use case and why it benefits Tanzania tourism visitors.
+Open a [GitHub Discussion](https://github.com/xenohuru/xenohuru-web/discussions) or issue labelled `enhancement`. Describe the use case and why it benefits Tanzania tourism visitors.
 
 ---
 
@@ -121,4 +121,4 @@ If you can't contribute code, consider [sponsoring the project](https://ko-fi.co
 
 ---
 
-**Twenzetu Safari — Journey Together, Discover Tanzania** 🌍
+**Xenohuru — Journey Together, Discover Tanzania** 🌍

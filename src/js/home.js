@@ -1,5 +1,5 @@
 /**
- * home.js — Twenzetu Safari home page
+ * home.js — Xenohuru home page
  * Loads featured attractions and regions via api.js, renders them into the DOM.
  *
  * ES module: imported by index.html with <script type="module">.

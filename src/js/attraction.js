@@ -419,7 +419,7 @@ function initShare(a) {
       // Web Share API — triggers native share sheet on mobile
       try {
         await navigator.share({
-          title: `${a.name} — Twenzetu Safari`,
+          title: `${a.name} — Xenohuru`,
           text:  a.short_description ?? `Discover ${a.name} in Tanzania.`,
           url,
         });
@@ -485,7 +485,7 @@ async function init() {
     populateWeather(weather);
 
     // Update browser tab title
-    document.title = `${attraction.name} — Twenzetu Safari`;
+    document.title = `${attraction.name} — Xenohuru`;
 
     // Load similar attractions (non-blocking — failure is handled inside)
     const regionName = attraction.region?.name ?? attraction.region_name;
