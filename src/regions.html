@@ -87,20 +87,27 @@
   </nav>
 
   <div id="mobile-overlay" class="fixed inset-0 z-40 bg-black/50 opacity-0 transition-opacity duration-300" aria-hidden="true"></div>
-  <aside id="mobile-drawer" class="fixed top-0 left-0 z-50 h-full w-72 bg-white shadow-xl -translate-x-full transition-transform duration-300" aria-label="Mobile navigation" aria-hidden="true">
+  <aside id="mobile-drawer" class="fixed top-0 left-0 z-50 h-full w-72 bg-white shadow-xl transition-transform duration-300" aria-label="Mobile navigation" aria-hidden="true">
     <div class="flex items-center justify-between p-4 border-b border-gray-100">
       <img src="images/xenohuru-logo.svg" alt="Xenohuru" class="h-8" />
       <button id="mobile-close" class="p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Close menu"><i data-lucide="x" class="w-5 h-5"></i></button>
     </div>
     <nav class="p-4" aria-label="Mobile navigation links">
-      <ul class="space-y-1" role="list">
+      <ul class="flex flex-col gap-1" role="list">
         <li><a href="index.html" class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Home</a></li>
         <li><a href="attractions.html" class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Attractions</a></li>
         <li><a href="regions.html" class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Regions</a></li>
         <li><a href="about.html" class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">About</a></li>
         <li><a href="sponsor.html" class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Sponsor</a></li>
       </ul>
-      <a href="attractions.html" class="mt-6 flex items-center justify-center gap-2 bg-tz-forest text-white font-semibold px-5 py-3 rounded-xl hover:bg-tz-forest/90 transition-colors">Explore Now</a>
+      <div class="mt-4 px-4">
+        <label class="text-xs text-tz-muted font-semibold uppercase tracking-wider">Language</label>
+        <select class="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2 text-sm" aria-label="Select language (mobile)">
+          <option value="en" selected>English</option>
+          <option value="sw">Kiswahili</option>
+        </select>
+      </div>
+      <a href="attractions.html" class="mt-6 mx-4 flex items-center justify-center gap-2 bg-tz-forest text-white font-semibold px-5 py-3 rounded-xl hover:bg-tz-forest/90 transition-colors">Explore Now</a>
     </nav>
   </aside>
 
