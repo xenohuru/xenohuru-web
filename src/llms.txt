@@ -1,0 +1,37 @@
+# Xenohuru
+
+Xenohuru is an open-source web application designed as a comprehensive travel guide to Tanzania. From the snow-capped summit of Mount Kilimanjaro to the turquoise waters of Zanzibar and the endless plains of the Serengeti, Xenohuru provides detailed information on attractions, regions, and climate to help travelers plan their perfect East African adventure.
+
+## Key Features & Structure
+
+- **API-First Architecture**: Fetches live data via REST endpoints with robust mock-data fallbacks for offline development.
+- **Regions**: Tanzania is divided into key regions (e.g., Arusha, Kilimanjaro, Zanzibar). Browse regions at `/regions.html`.
+- **Attractions**: Over 12 major attractions including national parks, mountains, beaches, and cultural sites. Browse at `/attractions.html`.
+- **Weather & Climate**: Detailed seasonal patterns and 7-day forecasts for planning. Explore at `/weather.html`.
+- **Search**: Fast, debounced search across all attractions and regions at `/search.html`.
+- **Open Source**: The project is community-built. See the contributors at `/contributors.html`.
+
+## API Endpoints Reference
+
+The site connects to a backend API (currently available at `https://cf89615f228bb45cc805447510de80.pythonanywhere.com/api/v1`) to populate dynamic content.
+
+### Core Data
+- `GET /regions/`: List all regions.
+- `GET /regions/{slug}/`: Details for a specific region.
+- `GET /attractions/`: List all attractions. Options: `?category={slug}`, `?region={slug}`, `?search={query}`.
+- `GET /attractions/featured/`: Get a subset of featured attractions.
+- `GET /attractions/{slug}/`: Comprehensive details for a specific attraction.
+
+### Weather Data
+- `GET /weather/current/?attraction={slug}`: Current weather at an attraction.
+- `GET /weather/forecast/?attraction={slug}`: 7-day forecast.
+- `GET /weather/seasonal/?attraction={slug}`: Historical seasonal weather patterns (dry season, short rains, long rains).
+
+## Technical Stack
+- Vanilla HTML/JS with Tailwind CSS (v4)
+- Splide.js for carousels
+- AOS for scroll animations
+- Lucide Icons for iconography
+
+## Contributing
+We welcome contributions on GitHub! Check out the `/contributors.html` page to see the faces behind the code. Visit our [GitHub Repository](https://github.com/xenohuru/xenohuru-web) to learn more.

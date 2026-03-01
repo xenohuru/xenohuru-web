@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="google-site-verification" content="pHPLMg-WCPRPZmMkRfwwU53xNb28y1Qh-334PcfDW38" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Search Tanzania's attractions and regions — find your perfect safari destination, beach, mountain, or cultural site on Xenohuru." />
+    <meta name="keywords"
+        content="search Tanzania attractions, find safari, Kilimanjaro, Zanzibar, Tanzania travel search" />
+    <meta property="og:title" content="Search — Xenohuru" />
+    <meta property="og:description"
+        content="Search across Tanzania's 12+ attractions and regions. Find your perfect destination." />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://xenohuru.netlify.app/search.html" />
+    <title>Search — Xenohuru</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@400;500;600&family=Space+Mono&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+      --color-tz-forest:  #1A4731;
+      --color-tz-savanna: #C8903A;
+      --color-tz-sky:     #1E6FA8;
+      --color-tz-sand:    #F5E6C8;
+      --color-tz-earth:   #8B5E3C;
+      --color-tz-dark:    #111827;
+      --color-tz-muted:   #6B7280;
+      --color-tz-light:   #FAFAF8;
+      --font-display: "Playfair Display", serif;
+      --font-body:    "DM Sans", sans-serif;
+      --font-mono:    "Space Mono", monospace;
+    }
+  </style>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#1A4731" />
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="images/favicons/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicons/favicon-96x96.png" />
+    <link rel="shortcut icon" href="images/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/favicons/favicon-96x96.png" />
+</head>
+
+<body class="bg-tz-light text-tz-dark font-body">
+
+    <div class="preloader" aria-hidden="true">
+        <div class="preloader-spinner"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" aria-label="Main navigation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center gap-2 h-10" aria-label="Xenohuru home"><img
+                        src="images/favicons/favicon.svg" alt="Xenohuru" class="h-full" /></a>
+                <ul class="hidden md:flex items-center gap-8" role="list">
+                    <li><a href="index.html"
+                            class="nav-link font-medium hover:text-tz-forest transition-colors">Home</a></li>
+                    <li><a href="attractions.html"
+                            class="nav-link font-medium hover:text-tz-forest transition-colors">Attractions</a></li>
+                    <li><a href="regions.html"
+                            class="nav-link font-medium hover:text-tz-forest transition-colors">Regions</a></li>
+                    <li><a href="about.html"
+                            class="nav-link font-medium hover:text-tz-forest transition-colors">About</a></li>
+                    <li><a href="sponsor.html"
+                            class="nav-link font-medium hover:text-tz-forest transition-colors">Sponsor</a></li>
+                </ul>
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="search.html" class="text-tz-forest" aria-label="Search" aria-current="page">
+                        <i data-lucide="search" class="w-5 h-5"></i>
+                    </a>
+                    <a href="attractions.html"
+                        class="inline-flex items-center gap-2 bg-tz-forest text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-tz-forest/90 transition-colors">Explore
+                        Now</a>
+                </div>
+                <button id="mobile-toggle" class="md:hidden p-2 rounded-lg" aria-label="Open menu" aria-expanded="false"
+                    aria-controls="mobile-drawer">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-overlay" class="fixed inset-0 z-40 bg-black/50 opacity-0 transition-opacity duration-300"
+        aria-hidden="true"></div>
+    <aside id="mobile-drawer"
+        class="fixed top-0 left-0 z-50 h-full w-72 bg-white shadow-xl transition-transform duration-300"
+        aria-label="Mobile navigation" aria-hidden="true">
+        <div class="flex items-center justify-between p-4 border-b border-gray-100">
+            <a href="index.html" class="flex items-center gap-2 h-10" aria-label="Xenohuru home"><img
+                    src="images/favicons/favicon.svg" alt="Xenohuru" class="h-full" /></a>
+            <button id="mobile-close" class="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                aria-label="Close menu"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <nav class="p-4" aria-label="Mobile navigation links">
+            <ul class="flex flex-col gap-1" role="list">
+                <li><a href="index.html"
+                        class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Home</a>
+                </li>
+                <li><a href="attractions.html"
+                        class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Attractions</a>
+                </li>
+                <li><a href="regions.html"
+                        class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Regions</a>
+                </li>
+                <li><a href="about.html"
+                        class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">About</a>
+                </li>
+                <li><a href="sponsor.html"
+                        class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Sponsor</a>
+                </li>
+            </ul>
+            <a href="attractions.html"
+                class="mt-6 mx-4 flex items-center justify-center gap-2 bg-tz-forest text-white font-semibold px-5 py-3 rounded-xl hover:bg-tz-forest/90 transition-colors">Explore
+                Now</a>
+        </nav>
+    </aside>
+
+    <main id="main-content" class="pt-16">
+
+        <!-- Search Hero -->
+        <section class="bg-tz-forest text-white py-16 px-4 text-center" aria-label="Search header">
+            <div class="max-w-2xl mx-auto">
+                <p class="font-mono text-tz-savanna uppercase tracking-widest text-sm mb-3">Find Your Adventure</p>
+                <h1 class="font-display text-4xl sm:text-5xl font-black mb-6">Search Tanzania</h1>
+
+                <!-- Search input -->
+                <div class="relative max-w-xl mx-auto">
+                    <i data-lucide="search"
+                        class="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none"
+                        aria-hidden="true"></i>
+                    <input id="main-search-input" type="search" placeholder="Search attractions, regions..."
+                        aria-label="Search Tanzania attractions and regions" autocomplete="off" class="w-full pl-14 pr-5 py-4 rounded-full text-tz-dark bg-white text-base shadow-xl
+                        focus:outline-none focus:ring-2 focus:ring-tz-savanna/60 transition-all" />
+                    <div id="search-spinner" class="hidden absolute right-5 top-1/2 -translate-y-1/2">
+                        <svg class="w-5 h-5 text-tz-muted animate-spin" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                            </circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <p id="search-meta" class="text-white/50 text-sm mt-4 font-mono" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <!-- Results area -->
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12" aria-label="Search results">
+
+            <!-- Default state — shown before any search -->
+            <div id="search-default" class="text-center py-12">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-lg mx-auto mb-8">
+                    <a href="search.html?q=safari"
+                        class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:border-tz-forest transition-colors text-center group">
+                        <i data-lucide="binoculars"
+                            class="w-6 h-6 text-tz-savanna mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                        <span class="text-sm font-medium text-tz-dark">Safari</span>
+                    </a>
+                    <a href="search.html?q=kilimanjaro"
+                        class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:border-tz-forest transition-colors text-center group">
+                        <i data-lucide="mountain"
+                            class="w-6 h-6 text-tz-forest mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                        <span class="text-sm font-medium text-tz-dark">Mountains</span>
+                    </a>
+                    <a href="search.html?q=beach"
+                        class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:border-tz-forest transition-colors text-center group">
+                        <i data-lucide="waves"
+                            class="w-6 h-6 text-tz-sky mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                        <span class="text-sm font-medium text-tz-dark">Beaches</span>
+                    </a>
+                    <a href="search.html?q=zanzibar"
+                        class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:border-tz-forest transition-colors text-center group">
+                        <i data-lucide="sun"
+                            class="w-6 h-6 text-tz-savanna mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                        <span class="text-sm font-medium text-tz-dark">Zanzibar</span>
+                    </a>
+                    <a href="search.html?q=cultural"
+                        class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:border-tz-forest transition-colors text-center group">
+                        <i data-lucide="landmark"
+                            class="w-6 h-6 text-tz-earth mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                        <span class="text-sm font-medium text-tz-dark">Cultural</span>
+                    </a>
+                    <a href="search.html?q=serengeti"
+                        class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:border-tz-forest transition-colors text-center group">
+                        <i data-lucide="zap"
+                            class="w-6 h-6 text-yellow-500 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                        <span class="text-sm font-medium text-tz-dark">Serengeti</span>
+                    </a>
+                </div>
+                <p class="text-tz-muted text-sm">Or try one of the popular searches above</p>
+            </div>
+
+            <!-- Loading skeleton -->
+            <div id="search-loading" class="hidden space-y-4">
+                <div class="rounded-2xl bg-gray-200 animate-pulse h-24"></div>
+                <div class="rounded-2xl bg-gray-200 animate-pulse h-24"></div>
+                <div class="rounded-2xl bg-gray-200 animate-pulse h-24"></div>
+                <div class="rounded-2xl bg-gray-200 animate-pulse h-24"></div>
+            </div>
+
+            <!-- Results list -->
+            <div id="search-results" class="hidden space-y-4" aria-live="polite" aria-atomic="true"></div>
+
+            <!-- Empty state -->
+            <div id="search-empty" class="hidden text-center py-16">
+                <i data-lucide="search-x" class="w-16 h-16 text-gray-300 mx-auto mb-4"></i>
+                <h2 class="font-display text-2xl font-bold text-tz-dark mb-2">No results found</h2>
+                <p class="text-tz-muted max-w-sm mx-auto" id="search-empty-text">Try a different search term.</p>
+                <div class="flex gap-3 justify-center mt-6">
+                    <a href="attractions.html"
+                        class="inline-flex items-center gap-2 bg-tz-forest text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-tz-forest/90 transition-colors">Browse
+                        All Attractions</a>
+                    <a href="regions.html"
+                        class="inline-flex items-center gap-2 border border-tz-forest text-tz-forest text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-tz-forest hover:text-white transition-colors">Explore
+                        Regions</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-tz-dark text-white" aria-label="Site footer">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
+                <div class="md:col-span-2">
+                    <a href="index.html" class="flex items-center gap-2 mb-4" aria-label="Xenohuru home">
+                        <img src="images/favicons/favicon.svg" alt="Xenohuru" class="h-10" />
+                    </a>
+                    <p class="text-white/60 text-sm leading-relaxed mb-4">Your open-source guide to the wonders of
+                        Tanzania — built by the community, for the curious.</p>
+                    <div class="tz-time time-display flex items-center gap-2 text-xs font-mono text-white/40">
+                        <i data-lucide="clock" class="w-3 h-3"></i>
+                        <span class="tz-time-value">--:--:--</span> <span class="tz-date-value">---</span> <span
+                            class="text-tz-savanna">EAT</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white/90 mb-4 uppercase tracking-wider text-xs">Explore</h3>
+                    <ul class="space-y-2 text-sm text-white/60" role="list">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="attractions.html" class="hover:text-white transition-colors">All Attractions</a>
+                        </li>
+                        <li><a href="regions.html" class="hover:text-white transition-colors">Regions</a></li>
+                        <li><a href="search.html" class="hover:text-white transition-colors">Search</a></li>
+                        <li><a href="weather.html" class="hover:text-white transition-colors">Weather</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white/90 mb-4 uppercase tracking-wider text-xs">Project</h3>
+                    <ul class="space-y-2 text-sm text-white/60" role="list">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="contributors.html" class="hover:text-white transition-colors">Contributors</a></li>
+                        <li><a href="sponsor.html" class="hover:text-white transition-colors">Sponsor</a></li>
+                        <li><a href="https://github.com/xenohuru/xenohuru-web" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center gap-2 hover:text-white transition-colors"><i
+                                    data-lucide="github" class="w-4 h-4"></i> GitHub</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white/90 mb-4 uppercase tracking-wider text-xs">Connect</h3>
+                    <ul class="space-y-2 text-sm text-white/60" role="list">
+                        <li><a href="https://github.com/xenohuru/xenohuru-web" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center gap-2 hover:text-white transition-colors"><i
+                                    data-lucide="github" class="w-4 h-4"></i> GitHub</a></li>
+                        <li><a href="mailto:hello@xenohuru.example"
+                                class="flex items-center gap-2 hover:text-white transition-colors"><i data-lucide="mail"
+                                    class="w-4 h-4"></i> Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-white/40 text-sm">
+                <p>&copy; <span class="current-year"></span> Xenohuru. Open source under MIT License.</p>
+                <p class="swahili-quote text-white/30 text-xs">"Tafuta na utapata" — Seek and you will find</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top"
+        class="fixed bottom-6 right-6 z-50 bg-tz-forest text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none hover:bg-tz-forest/90 transition-all duration-300"
+        aria-label="Back to top">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="js/scripts.js" defer></script>
+    <script type="module" src="js/search.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(r => console.log('[SW]', r.scope)).catch(e => console.warn('[SW]', e));
+            });
+        }
+    </script>
+</body>
+
+</html>

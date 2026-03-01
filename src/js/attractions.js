@@ -25,10 +25,10 @@ let allAttractions = [];
  * 'all' means no filter is applied for that dimension.
  */
 let filters = {
-  region:     'all',
-  category:   'all',
+  region: 'all',
+  category: 'all',
   difficulty: 'all',
-  search:     '',
+  search: '',
 };
 
 /** Current view mode: 'grid' or 'list' */
@@ -64,7 +64,7 @@ function categoryBadge(display) {
  */
 function buildCard(a) {
   const fallbackImg = 'images/photo-1547036967-23d11aacaee0.jpg';
-  const imgSrc      = a.featured_image || fallbackImg;
+  const imgSrc = a.featured_image || fallbackImg;
 
   if (viewMode === 'list') {
     // ── List view: landscape card ──────────────────────────────────
@@ -184,9 +184,9 @@ function buildCard(a) {
  * @param {Array} attractions - Filtered subset of allAttractions to display.
  */
 function renderCards(attractions) {
-  const grid       = document.getElementById('attractions-grid');
+  const grid = document.getElementById('attractions-grid');
   const emptyState = document.getElementById('empty-state');
-  const countEl    = document.getElementById('results-count');
+  const countEl = document.getElementById('results-count');
 
   if (!grid) return;
 
@@ -257,14 +257,14 @@ function applyFilters() {
 function initFilterPills() {
   document.querySelectorAll('.filter-pill').forEach(pill => {
     pill.addEventListener('click', () => {
-      const filterKey   = pill.dataset.filter;  // e.g. "region"
+      const filterKey = pill.dataset.filter;  // e.g. "region"
       const filterValue = pill.dataset.value;   // e.g. "Arusha"
 
       // ── Deactivate all pills in the *same* filter group only ──
       // querySelectorAll scopes to the current document; we match by
       // data-filter so we never touch pills from a different group.
       document.querySelectorAll(`.filter-pill[data-filter="${filterKey}"]`)
-              .forEach(p => p.classList.remove('active'));
+        .forEach(p => p.classList.remove('active'));
 
       // ── Activate the clicked pill ──
       pill.classList.add('active');
@@ -318,7 +318,7 @@ function initSearch() {
 function initViewToggle() {
   const gridBtn = document.getElementById('view-grid');
   const listBtn = document.getElementById('view-list');
-  const grid    = document.getElementById('attractions-grid');
+  const grid = document.getElementById('attractions-grid');
 
   const setGrid = () => {
     viewMode = 'grid';
@@ -378,6 +378,60 @@ function initResetButton() {
   });
 }
 
+// ── Dynamic filter pills ──────────────────────────────────────────────
+
+/**
+ * Reads the API data to build region and category filter pills dynamically.
+ * Falls back gracefully — if no data, the hardcoded HTML pills still work.
+ *
+ * @param {Array} attractions - Full list of attractions loaded from API/mock.
+ */
+function buildDynamicFilterPills(attractions) {
+  // ── Regions ──
+  const regionContainer = document.querySelector('[role="group"][aria-label="Filter by region"]');
+  if (regionContainer) {
+    const regionNames = [...new Set(attractions.map(a => a.region_name).filter(Boolean))].sort();
+    if (regionNames.length) {
+      // Preserve the "All" pill + label; rebuild the rest
+      const allPill = regionContainer.querySelector('.filter-pill[data-value="all"]');
+      const label = regionContainer.querySelector('span.shrink-0');
+      regionContainer.innerHTML = '';
+      if (label) regionContainer.appendChild(label);
+      if (allPill) regionContainer.appendChild(allPill);
+      regionNames.forEach(r => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-pill text-sm px-3 py-1.5 rounded-full border border-gray-200 hover:border-tz-forest transition-all';
+        btn.dataset.filter = 'region';
+        btn.dataset.value = r;
+        btn.textContent = r;
+        regionContainer.appendChild(btn);
+      });
+    }
+  }
+
+  // ── Categories ──
+  const catContainer = document.querySelector('[role="group"][aria-label="Filter by category"]');
+  if (catContainer) {
+    const cats = [...new Set(attractions.map(a => ({ key: a.category, display: a.category_display })).filter(c => c.key)
+      .map(c => JSON.stringify(c)))].map(s => JSON.parse(s)).sort((a, b) => a.display.localeCompare(b.display));
+    if (cats.length) {
+      const allPill = catContainer.querySelector('.filter-pill[data-value="all"]');
+      const label = catContainer.querySelector('span.shrink-0');
+      catContainer.innerHTML = '';
+      if (label) catContainer.appendChild(label);
+      if (allPill) catContainer.appendChild(allPill);
+      cats.forEach(c => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-pill text-sm px-3 py-1.5 rounded-full border border-gray-200 hover:border-tz-forest transition-all';
+        btn.dataset.filter = 'category';
+        btn.dataset.value = c.key;
+        btn.textContent = c.display;
+        catContainer.appendChild(btn);
+      });
+    }
+  }
+}
+
 // ── Init ──────────────────────────────────────────────────────────────
 
 /**
@@ -389,12 +443,13 @@ function initResetButton() {
 async function init() {
   // Pre-apply filters from URL query params (e.g. ?region=Zanzibar from regions.html links)
   const params = new URLSearchParams(window.location.search);
-  if (params.get('region')) filters.region = params.get('region').toLowerCase();
-  if (params.get('category')) filters.category = params.get('category').toLowerCase();
+  if (params.get('region')) filters.region = params.get('region');
+  if (params.get('category')) filters.category = params.get('category');
   if (params.get('difficulty')) filters.difficulty = params.get('difficulty').toLowerCase();
 
   try {
     allAttractions = await api.getAttractions();
+    buildDynamicFilterPills(allAttractions);
     renderCards(allAttractions);
   } catch (err) {
     console.error('[attractions] Failed to load attractions:', err);

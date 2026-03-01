@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="google-site-verification" content="pHPLMg-WCPRPZmMkRfwwU53xNb28y1Qh-334PcfDW38" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Explore Tanzania's weather forecasts and seasonal patterns to plan your perfect safari or Kilimanjaro trek." />
+    <meta name="keywords" content="Tanzania weather, seasonal patterns, Kilimanjaro weather, Serengeti rainfall" />
+    <meta property="og:title" content="Weather — Xenohuru" />
+    <meta property="og:description" content="Plan your trip with our Tanzania weather and seasonal guide." />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://xenohuru.netlify.app/weather.html" />
+    <title>Weather — Xenohuru</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@400;500;600&family=Space+Mono&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+      --color-tz-forest:  #1A4731;
+      --color-tz-savanna: #C8903A;
+      --color-tz-sky:     #1E6FA8;
+      --color-tz-sand:    #F5E6C8;
+      --color-tz-earth:   #8B5E3C;
+      --color-tz-dark:    #111827;
+      --color-tz-muted:   #6B7280;
+      --color-tz-light:   #FAFAF8;
+      --font-display: "Playfair Display", serif;
+      --font-body:    "DM Sans", sans-serif;
+      --font-mono:    "Space Mono", monospace;
+    }
+  </style>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#1A4731" />
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="images/favicons/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicons/favicon-96x96.png" />
+    <link rel="shortcut icon" href="images/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/favicons/favicon-96x96.png" />
+</head>
+
+<body class="bg-tz-light text-tz-dark font-body">
+
+    <div class="preloader" aria-hidden="true">
+        <div class="preloader-spinner"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" aria-label="Main navigation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center gap-2 h-10" aria-label="Xenohuru home"><img
+                        src="images/favicons/favicon.svg" alt="Xenohuru" class="h-full" /></a>
+                <ul class="hidden md:flex items-center gap-8" role="list">
+                    <li><a href="index.html"
+                            class="nav-link font-medium hover:text-tz-forest transition-colors">Home</a></li>
+                    <li><a href="attractions.html"
+                            class="nav-link font-medium hover:text-tz-forest transition-colors">Attractions</a></li>
+                    <li><a href="regions.html"
+                            class="nav-link font-medium hover:text-tz-forest transition-colors">Regions</a></li>
+                    <li><a href="about.html"
+                            class="nav-link font-medium hover:text-tz-forest transition-colors">About</a></li>
+                    <li><a href="sponsor.html"
+                            class="nav-link font-medium hover:text-tz-forest transition-colors">Sponsor</a></li>
+                </ul>
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="search.html" class="text-tz-forest" aria-label="Search" aria-current="page">
+                        <i data-lucide="search" class="w-5 h-5"></i>
+                    </a>
+                    <a href="attractions.html"
+                        class="inline-flex items-center gap-2 bg-tz-forest text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-tz-forest/90 transition-colors">Explore
+                        Now</a>
+                </div>
+                <button id="mobile-toggle" class="md:hidden p-2 rounded-lg" aria-label="Open menu" aria-expanded="false"
+                    aria-controls="mobile-drawer">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-overlay" class="fixed inset-0 z-40 bg-black/50 opacity-0 transition-opacity duration-300"
+        aria-hidden="true"></div>
+    <aside id="mobile-drawer"
+        class="fixed top-0 left-0 z-50 h-full w-72 bg-white shadow-xl transition-transform duration-300"
+        aria-label="Mobile navigation" aria-hidden="true">
+        <div class="flex items-center justify-between p-4 border-b border-gray-100">
+            <a href="index.html" class="flex items-center gap-2 h-10" aria-label="Xenohuru home"><img
+                    src="images/favicons/favicon.svg" alt="Xenohuru" class="h-full" /></a>
+            <button id="mobile-close" class="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                aria-label="Close menu"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <nav class="p-4" aria-label="Mobile navigation links">
+            <ul class="flex flex-col gap-1" role="list">
+                <li><a href="index.html"
+                        class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Home</a>
+                </li>
+                <li><a href="attractions.html"
+                        class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Attractions</a>
+                </li>
+                <li><a href="regions.html"
+                        class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Regions</a>
+                </li>
+                <li><a href="about.html"
+                        class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">About</a>
+                </li>
+                <li><a href="sponsor.html"
+                        class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-bg-tz-sand hover:text-tz-forest transition-colors">Sponsor</a>
+                </li>
+            </ul>
+            <a href="attractions.html"
+                class="mt-6 mx-4 flex items-center justify-center gap-2 bg-tz-forest text-white font-semibold px-5 py-3 rounded-xl hover:bg-tz-forest/90 transition-colors">Explore
+                Now</a>
+        </nav>
+    </aside>
+
+    <main id="main-content" class="pt-16">
+
+        <!-- Weather Hero -->
+        <section class="bg-tz-forest text-white py-16 px-4 text-center" aria-label="Weather header">
+            <div class="max-w-3xl mx-auto" data-aos="fade-up">
+                <p class="font-mono text-tz-savanna uppercase tracking-widest text-sm mb-3">Plan your trip</p>
+                <h1 class="font-display text-4xl sm:text-5xl font-black mb-6">Tanzania Climate & Weather</h1>
+                <p class="text-white/80 text-lg mb-8 max-w-2xl mx-auto">Tanzania features a tropical climate divided
+                    into distinct wet and dry seasons. Select a destination below to view the current forecast and
+                    seasonal patterns.</p>
+
+                <div
+                    class="max-w-md mx-auto relative bg-white rounded-full p-2 flex items-center shadow-2xl overflow-hidden">
+                    <span class="pl-4 text-tz-forest"><i data-lucide="map-pin" class="w-5 h-5"></i></span>
+                    <select id="location-select"
+                        class="w-full bg-transparent border-none focus:ring-0 text-tz-dark font-medium pl-3 pr-8 py-2 appearance-none cursor-pointer"
+                        aria-label="Select Target Location">
+                        <option value="all">General Tanzania</option>
+                        <!-- Options populated via JS -->
+                    </select>
+                    <span class="absolute right-5 pointer-events-none text-tz-muted"><i data-lucide="chevron-down"
+                            class="w-4 h-4"></i></span>
+                </div>
+            </div>
+        </section>
+
+        <div id="weather-loading" class="hidden max-w-7xl mx-auto px-4 py-20 text-center">
+            <svg class="w-10 h-10 text-tz-savanna animate-spin mx-auto mb-4" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+            </svg>
+            <p class="text-tz-muted font-medium">Fetching weather data...</p>
+        </div>
+
+        <div id="weather-error" class="hidden max-w-3xl mx-auto px-4 py-20 text-center">
+            <i data-lucide="cloud-off" class="w-16 h-16 text-gray-300 mx-auto mb-4"></i>
+            <h3 class="font-display text-2xl font-bold text-tz-dark mb-2">Weather Data Unavailable</h3>
+            <p class="text-tz-muted mb-6">We couldn't fetch the weather for this location right now. Please try again
+                later.</p>
+            <button id="retry-btn"
+                class="bg-tz-forest text-white px-6 py-2 rounded-full font-semibold hover:bg-tz-forest/90 transition-colors">Retry</button>
+        </div>
+
+        <div id="weather-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20 hidden">
+            <!-- Forecast Section -->
+            <section aria-labelledby="forecast-title" data-aos="fade-up">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 id="forecast-title" class="font-display text-3xl font-bold text-tz-dark mb-2">7-Day Forecast
+                        </h2>
+                        <p id="forecast-location-label" class="text-tz-muted">Showing forecast for General Tanzania</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4" id="forecast-grid">
+                    <!-- Cards populated via JS -->
+                </div>
+            </section>
+
+            <!-- Seasonal Patterns Section -->
+            <section aria-labelledby="seasonal-title" data-aos="fade-up">
+                <div class="mb-10 text-center max-w-2xl mx-auto">
+                    <p class="font-mono text-tz-savanna uppercase tracking-widest text-sm mb-2">Climate Guide</p>
+                    <h2 id="seasonal-title" class="font-display text-3xl font-bold text-tz-dark mb-4">Seasonal Patterns
+                    </h2>
+                    <p class="text-tz-muted">Understanding Tanzania's distinct wet and dry seasons helps dictate the
+                        best times to travel.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="seasonal-grid">
+                    <!-- Cards populated via JS -->
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-tz-dark text-white" aria-label="Site footer">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
+                <div class="md:col-span-2">
+                    <a href="index.html" class="flex items-center gap-2 mb-4" aria-label="Xenohuru home">
+                        <img src="images/favicons/favicon.svg" alt="Xenohuru" class="h-10" />
+                    </a>
+                    <p class="text-white/60 text-sm leading-relaxed mb-4">Your open-source guide to the wonders of
+                        Tanzania — built by the community, for the curious.</p>
+                    <div class="tz-time time-display flex items-center gap-2 text-xs font-mono text-white/40">
+                        <i data-lucide="clock" class="w-3 h-3"></i>
+                        <span class="tz-time-value">--:--:--</span> <span class="tz-date-value">---</span> <span
+                            class="text-tz-savanna">EAT</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white/90 mb-4 uppercase tracking-wider text-xs">Explore</h3>
+                    <ul class="space-y-2 text-sm text-white/60" role="list">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="attractions.html" class="hover:text-white transition-colors">All Attractions</a>
+                        </li>
+                        <li><a href="regions.html" class="hover:text-white transition-colors">Regions</a></li>
+                        <li><a href="search.html" class="hover:text-white transition-colors">Search</a></li>
+                        <li><a href="weather.html" class="hover:text-white transition-colors">Weather</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white/90 mb-4 uppercase tracking-wider text-xs">Project</h3>
+                    <ul class="space-y-2 text-sm text-white/60" role="list">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="contributors.html" class="hover:text-white transition-colors">Contributors</a></li>
+                        <li><a href="sponsor.html" class="hover:text-white transition-colors">Sponsor</a></li>
+                        <li><a href="https://github.com/xenohuru/xenohuru-web" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center gap-2 hover:text-white transition-colors"><i
+                                    data-lucide="github" class="w-4 h-4"></i> GitHub</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white/90 mb-4 uppercase tracking-wider text-xs">Connect</h3>
+                    <ul class="space-y-2 text-sm text-white/60" role="list">
+                        <li><a href="https://github.com/xenohuru/xenohuru-web" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center gap-2 hover:text-white transition-colors"><i
+                                    data-lucide="github" class="w-4 h-4"></i> GitHub</a></li>
+                        <li><a href="mailto:hello@xenohuru.example"
+                                class="flex items-center gap-2 hover:text-white transition-colors"><i data-lucide="mail"
+                                    class="w-4 h-4"></i> Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-white/40 text-sm">
+                <p>&copy; <span class="current-year"></span> Xenohuru. Open source under MIT License.</p>
+                <p class="swahili-quote text-white/30 text-xs">"Njoo uone" — Come and see</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top"
+        class="fixed bottom-6 right-6 z-50 bg-tz-forest text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none hover:bg-tz-forest/90 transition-all duration-300"
+        aria-label="Back to top">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="js/scripts.js" defer></script>
+    <script type="module" src="js/weather.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(r => console.log('[SW]', r.scope)).catch(e => console.warn('[SW]', e));
+            });
+        }
+    </script>
+</body>
+
+</html>

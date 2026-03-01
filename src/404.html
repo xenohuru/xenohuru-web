@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Page not found — Xenohuru" />
+    <title>404 — Not Found — Xenohuru</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@400;500;600&family=Space+Mono&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+      --color-tz-forest:  #1A4731;
+      --color-tz-savanna: #C8903A;
+      --color-tz-sky:     #1E6FA8;
+      --color-tz-sand:    #F5E6C8;
+      --color-tz-earth:   #8B5E3C;
+      --color-tz-dark:    #111827;
+      --color-tz-muted:   #6B7280;
+      --color-tz-light:   #FAFAF8;
+      --font-display: "Playfair Display", serif;
+      --font-body:    "DM Sans", sans-serif;
+      --font-mono:    "Space Mono", monospace;
+    }
+  </style>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1A4731" />
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/images/favicons/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicons/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/images/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" href="/images/favicons/favicon-96x96.png" />
+</head>
+
+<body class="bg-tz-light text-tz-dark font-body flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-tz-forest"
+        aria-label="Main navigation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/index.html" class="flex items-center gap-2 h-10" aria-label="Xenohuru home"><img
+                        src="/images/favicons/favicon.svg" alt="Xenohuru" class="h-full" /></a>
+                <ul class="hidden md:flex items-center gap-8 text-white" role="list">
+                    <li><a href="/index.html"
+                            class="nav-link font-medium hover:text-tz-savanna transition-colors">Home</a></li>
+                    <li><a href="/attractions.html"
+                            class="nav-link font-medium hover:text-tz-savanna transition-colors">Attractions</a></li>
+                    <li><a href="/regions.html"
+                            class="nav-link font-medium hover:text-tz-savanna transition-colors">Regions</a></li>
+                    <li><a href="/about.html"
+                            class="nav-link font-medium hover:text-tz-savanna transition-colors">About</a></li>
+                    <li><a href="/sponsor.html"
+                            class="nav-link font-medium hover:text-tz-savanna transition-colors">Sponsor</a></li>
+                </ul>
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="/search.html" class="text-white hover:text-tz-savanna" aria-label="Search">
+                        <i data-lucide="search" class="w-5 h-5"></i>
+                    </a>
+                    <a href="/attractions.html"
+                        class="inline-flex items-center gap-2 bg-tz-savanna text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-tz-savanna/90 transition-colors">Explore
+                        Now</a>
+                </div>
+                <button id="mobile-toggle" class="md:hidden p-2 rounded-lg text-white" aria-label="Open menu"
+                    aria-expanded="false" aria-controls="mobile-drawer">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-overlay" class="fixed inset-0 z-40 bg-black/50 opacity-0 transition-opacity duration-300 hidden"
+        aria-hidden="true"></div>
+    <aside id="mobile-drawer"
+        class="fixed top-0 left-0 z-50 h-full w-72 bg-white shadow-xl transition-transform duration-300 -translate-x-full"
+        aria-label="Mobile navigation" aria-hidden="true">
+        <div class="flex items-center justify-between p-4 border-b border-gray-100">
+            <a href="/index.html" class="flex items-center gap-2 h-10" aria-label="Xenohuru home"><img
+                    src="/images/favicons/favicon.svg" alt="Xenohuru" class="h-full" /></a>
+            <button id="mobile-close" class="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                aria-label="Close menu"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <nav class="p-4" aria-label="Mobile navigation links">
+            <ul class="flex flex-col gap-1" role="list">
+                <li><a href="/index.html"
+                        class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Home</a>
+                </li>
+                <li><a href="/attractions.html"
+                        class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Attractions</a>
+                </li>
+                <li><a href="/regions.html"
+                        class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Regions</a>
+                </li>
+                <li><a href="/about.html"
+                        class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">About</a>
+                </li>
+                <li><a href="/sponsor.html"
+                        class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Sponsor</a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main id="main-content" class="flex-grow flex items-center justify-center pt-24 pb-16 px-4">
+        <div class="max-w-2xl w-full text-center" data-aos="fade-up">
+            <div class="relative inline-block mb-8">
+                <i data-lucide="compass" class="w-32 h-32 text-tz-savanna/20 mx-auto transform -rotate-45"></i>
+                <h1
+                    class="font-display font-black text-tz-forest text-8xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    404</h1>
+            </div>
+
+            <h2 class="font-display text-3xl font-bold text-tz-dark mb-4">Seems you've wandered off the trail!</h2>
+            <p class="text-tz-muted text-lg mb-10 max-w-lg mx-auto">Not to worry, even the most experienced guides
+                sometimes take a wrong turn in the Serengeti. Let's get you back on track.</p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/index.html"
+                    class="inline-flex items-center justify-center gap-2 bg-tz-forest text-white font-semibold px-8 py-3.5 rounded-full hover:bg-tz-forest/90 transition-all shadow-lg text-base group">
+                    <i data-lucide="home" class="w-5 h-5 group-hover:-translate-y-0.5 transition-transform"></i> Return
+                    to Basecamp
+                </a>
+                <a href="/attractions.html"
+                    class="inline-flex items-center justify-center gap-2 border-2 border-tz-savanna text-tz-savanna font-semibold px-8 py-3.5 rounded-full hover:bg-tz-savanna hover:text-white transition-all text-base group">
+                    <i data-lucide="map" class="w-5 h-5 group-hover:scale-110 transition-transform"></i> Browse
+                    Attractions
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-tz-dark text-white mt-auto" aria-label="Site footer">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <a href="/index.html" class="flex items-center gap-3" aria-label="Xenohuru home">
+                    <img src="/images/favicons/favicon.svg" alt="Xenohuru" class="h-8" />
+                    <span class="font-display text-lg font-bold">Xenohuru</span>
+                </a>
+                <p class="text-white/40 text-sm">&copy; <span class="current-year"></span> Xenohuru. Open source under
+                    MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) window.lucide.createIcons();
+
+            const btn = document.getElementById('mobile-toggle');
+            const panel = document.getElementById('mobile-drawer');
+            const closeBtn = document.getElementById('mobile-close');
+            const overlay = document.getElementById('mobile-overlay');
+
+            function closeMenu() {
+                panel.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+                overlay.classList.remove('opacity-100');
+                btn.setAttribute('aria-expanded', 'false');
+            }
+
+            if (btn && panel) {
+                btn.addEventListener('click', () => {
+                    panel.classList.remove('-translate-x-full');
+                    overlay.classList.remove('hidden');
+                    // tiny delay to allow transition
+                    setTimeout(() => overlay.classList.add('opacity-100'), 10);
+                    btn.setAttribute('aria-expanded', 'true');
+                });
+            }
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            if (overlay) overlay.addEventListener('click', closeMenu);
+        });
+    </script>
+</body>
+
+</html>

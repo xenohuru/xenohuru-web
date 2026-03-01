@@ -7,6 +7,29 @@
  */
 import { api } from './api.js';
 
+// ── Stats Bar (Live API counts) ───────────────────────────────────────
+
+/**
+ * Fetches live attraction and region counts from the API and updates the
+ * data-count attributes on the stats bar elements so the counter
+ * animation (run by scripts.js) uses real numbers.
+ */
+async function loadStats() {
+  try {
+    const { attractionCount, regionCount } = await api.getStats();
+    // Update data-count so the counter animation targets the real value
+    const attrEl = document.querySelector('.stat-number[data-count="12"]');
+    const regionEl = document.querySelector('.stat-number[data-count="3"]');
+    if (attrEl) attrEl.dataset.count = attractionCount;
+    if (regionEl) regionEl.dataset.count = regionCount;
+    // If counters already ran (unlikely but safe), override textContent too
+    if (attrEl && attrEl.textContent !== '0') attrEl.textContent = attractionCount;
+    if (regionEl && regionEl.textContent !== '0') regionEl.textContent = regionCount;
+  } catch (err) {
+    console.warn('[home] Could not update stats bar:', err.message);
+  }
+}
+
 // ── Helpers ──────────────────────────────────────────────────────────
 
 /**
@@ -78,14 +101,14 @@ async function loadFeaturedAttractions() {
     // Mount Splide carousel now that slides exist in the DOM
     if (typeof Splide !== 'undefined') {
       new Splide('#featured-splide', {
-        type:     'loop',   // infinite looping
-        perPage:  3,        // show 3 slides on wide screens
-        perMove:  1,
-        gap:      '1.5rem',
-        padding:  '2rem',
+        type: 'loop',   // infinite looping
+        perPage: 3,        // show 3 slides on wide screens
+        perMove: 1,
+        gap: '1.5rem',
+        padding: '2rem',
         breakpoints: {
           1024: { perPage: 2 }, // tablet: 2 slides
-          768:  { perPage: 1 }, // mobile: 1 slide
+          768: { perPage: 1 }, // mobile: 1 slide
         },
       }).mount();
     }
@@ -162,6 +185,7 @@ async function loadRegions() {
  * They run concurrently — no need to await one before starting the other.
  */
 document.addEventListener('DOMContentLoaded', () => {
+  loadStats();
   loadFeaturedAttractions();
   loadRegions();
 });

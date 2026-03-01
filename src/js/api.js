@@ -32,19 +32,19 @@ async function apiFetch(path, mockFallback) {
 }
 
 export const api = {
-  /** GET /api/v1/regions/ */
+  /** GET /regions/ */
   getRegions: () => apiFetch('/regions/', () => MOCK_DATA.regions),
 
-  /** GET /api/v1/attractions/ */
+  /** GET /attractions/ */
   getAttractions: () => apiFetch('/attractions/', () => MOCK_DATA.attractions),
 
-  /** GET /api/v1/attractions/featured/ */
+  /** GET /attractions/featured/ */
   getFeaturedAttractions: () =>
     apiFetch('/attractions/featured/', () =>
       MOCK_DATA.attractions.filter(a => a.is_featured)
     ),
 
-  /** GET /api/v1/attractions/:slug/ */
+  /** GET /attractions/:slug/ */
   getAttraction: (slug) =>
     apiFetch(`/attractions/${slug}/`, () => {
       const detail = MOCK_DATA.attractionDetails[slug];
@@ -52,23 +52,102 @@ export const api = {
       return detail;
     }),
 
-  /** GET /api/v1/weather/current/?attraction=:slug */
+  /** GET /weather/current/?attraction=:slug */
   getWeather: (slug) =>
     apiFetch(`/weather/current/?attraction=${slug}`, () => MOCK_DATA.weather.current_weather),
 
-  /** GET /api/v1/weather/forecast/?attraction=:slug */
+  /** GET /weather/forecast/?attraction=:slug */
   getWeatherForecast: (slug) =>
     apiFetch(`/weather/forecast/?attraction=${slug}`, () => MOCK_DATA.weather.forecast),
 
-  /** GET /api/v1/weather/seasonal/?attraction=:slug */
+  /** GET /weather/seasonal/?attraction=:slug */
   getSeasonalPatterns: (slug) =>
     apiFetch(`/weather/seasonal/?attraction=${slug}`, () => MOCK_DATA.weather.seasonal_patterns),
 
-  /** GET /api/v1/attractions/by_category/ */
-  getAttractionsByCategory: () =>
-    apiFetch('/attractions/by_category/', () => ({})),
+  /** GET /weather/seasonal/ (no slug — general Tanzania overview) */
+  getGeneralSeasonalPatterns: () =>
+    apiFetch('/weather/seasonal/', () => MOCK_DATA.weather.seasonal_patterns),
 
-  /** GET /api/v1/attractions/by_region/ */
-  getAttractionsByRegion: () =>
-    apiFetch('/attractions/by_region/', () => ({})),
+  /** GET /weather/forecast/ (Tanzania general forecast) */
+  getGeneralForecast: () =>
+    apiFetch('/weather/forecast/', () => MOCK_DATA.weather.forecast),
+
+  /**
+   * GET /attractions/by_category/?category=:cat
+   * Pass no argument to get all grouped by category.
+   */
+  getAttractionsByCategory: (category) => {
+    const path = category
+      ? `/attractions/by_category/?category=${encodeURIComponent(category)}`
+      : '/attractions/by_category/';
+    return apiFetch(path, () => {
+      if (category) return MOCK_DATA.attractions.filter(a => a.category === category);
+      return MOCK_DATA.attractions.reduce((acc, a) => {
+        (acc[a.category] = acc[a.category] || []).push(a);
+        return acc;
+      }, {});
+    });
+  },
+
+  /**
+   * GET /attractions/by_region/?region=:region
+   * Pass no argument to get all grouped by region.
+   */
+  getAttractionsByRegion: (region) => {
+    const path = region
+      ? `/attractions/by_region/?region=${encodeURIComponent(region)}`
+      : '/attractions/by_region/';
+    return apiFetch(path, () => {
+      if (region) return MOCK_DATA.attractions.filter(a => a.region_name === region);
+      return MOCK_DATA.attractions.reduce((acc, a) => {
+        (acc[a.region_name] = acc[a.region_name] || []).push(a);
+        return acc;
+      }, {});
+    });
+  },
+
+  /**
+   * GET /attractions/?search=:q
+   * Full-text search across attractions.
+   */
+  searchAttractions: (q) =>
+    apiFetch(`/attractions/?search=${encodeURIComponent(q)}`, () => {
+      const query = q.trim().toLowerCase();
+      return MOCK_DATA.attractions.filter(a =>
+        a.name.toLowerCase().includes(query) ||
+        (a.short_description || '').toLowerCase().includes(query) ||
+        (a.region_name || '').toLowerCase().includes(query) ||
+        (a.category_display || '').toLowerCase().includes(query)
+      );
+    }),
+
+  /**
+   * GET /regions/?search=:q
+   * Search across regions.
+   */
+  searchRegions: (q) =>
+    apiFetch(`/regions/?search=${encodeURIComponent(q)}`, () => {
+      const query = q.trim().toLowerCase();
+      return MOCK_DATA.regions.filter(r =>
+        r.name.toLowerCase().includes(query) ||
+        (r.description || '').toLowerCase().includes(query)
+      );
+    }),
+
+  /**
+   * Fetches live attraction and region counts for the homepage stats bar.
+   * Falls back gracefully to mock data lengths.
+   */
+  async getStats() {
+    const [attractions, regions] = await Promise.allSettled([
+      this.getAttractions(),
+      this.getRegions(),
+    ]);
+    const attractionList = attractions.status === 'fulfilled' ? attractions.value : MOCK_DATA.attractions;
+    const regionList     = regions.status     === 'fulfilled' ? regions.value     : MOCK_DATA.regions;
+    return {
+      attractionCount: Array.isArray(attractionList) ? attractionList.length : MOCK_DATA.attractions.length,
+      regionCount:     Array.isArray(regionList)     ? regionList.length     : MOCK_DATA.regions.length,
+    };
+  },
 };
