@@ -6,7 +6,7 @@
  */
 
 import { api } from './api.js';
-import { emptyStateHTML, errorStateHTML } from './placeholder.js';
+import { emptyStateHTML, errorStateHTML, imgPlaceholder } from './placeholder.js';
 
 const skeleton  = document.getElementById('blog-skeleton');
 const grid      = document.getElementById('blog-grid');
@@ -41,7 +41,7 @@ function buildCard(post) {
   const author    = post.author || post.author_name || 'Xenohuru';
   const date      = fmtDate(post.published_at || post.created_at);
   const readTime  = post.read_time || post.reading_time || '5';
-  const imgSrc    = post.cover_image || post.image || '';
+  const imgSrc    = imgPlaceholder(title);
 
   return `
     <article class="blog-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col" role="listitem">

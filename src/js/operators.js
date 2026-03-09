@@ -6,7 +6,7 @@
  */
 
 import { api } from './api.js';
-import { emptyStateHTML, errorStateHTML } from './placeholder.js';
+import { emptyStateHTML, errorStateHTML, imgPlaceholder } from './placeholder.js';
 
 const skeleton    = document.getElementById('operators-skeleton');
 const grid        = document.getElementById('operators-grid');
@@ -64,7 +64,7 @@ function buildCard(op) {
   return `
     <article class="operator-card bg-white rounded-2xl overflow-hidden shadow-sm border border-tz-sand/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col" role="listitem">
       <div class="relative h-40 bg-tz-sand data-grid-placeholder overflow-hidden flex-shrink-0">
-        <img src="${logo}" alt="${name}" class="w-full h-full object-cover" data-fallback="placeholder" loading="lazy" />
+        <img src="${imgPlaceholder(name)}" alt="${name}" class="w-full h-full object-cover" loading="lazy" />
       </div>
       <div class="p-5 flex flex-col flex-1">
         <div class="flex items-start justify-between gap-2 mb-3">

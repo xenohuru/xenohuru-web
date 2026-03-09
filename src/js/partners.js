@@ -6,7 +6,7 @@
  */
 
 import { api } from './api.js';
-import { emptyStateHTML, errorStateHTML } from './placeholder.js';
+import { emptyStateHTML, errorStateHTML, imgPlaceholder } from './placeholder.js';
 
 const skeleton = document.getElementById('partners-skeleton');
 const grid     = document.getElementById('partners-grid');
@@ -35,7 +35,7 @@ function buildCard(partner) {
   return `
     <div class="partner-card bg-white rounded-2xl p-6 shadow-sm border border-tz-sand/50 flex flex-col items-center text-center gap-3 hover:shadow-md hover:-translate-y-1 transition-all duration-300" role="listitem">
       <div class="w-20 h-20 rounded-full bg-tz-sand data-grid-placeholder flex items-center justify-center overflow-hidden flex-shrink-0">
-        <img src="${logo}" alt="${name} logo" class="w-full h-full object-contain" data-fallback="placeholder" loading="lazy" />
+        <img src="${imgPlaceholder(name)}" alt="${name} logo" class="w-full h-full object-contain" loading="lazy" />
       </div>
       <div class="flex flex-col items-center gap-1">
         <h3 class="font-semibold text-tz-dark text-base leading-tight">${name}</h3>

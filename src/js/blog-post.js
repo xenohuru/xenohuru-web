@@ -6,6 +6,7 @@
  */
 
 import { api } from './api.js';
+import { emptyStateHTML, errorStateHTML, imgPlaceholder } from './placeholder.js';
 
 const skeleton    = document.getElementById('post-skeleton');
 const content     = document.getElementById('post-content');
@@ -32,7 +33,7 @@ function relatedCard(post) {
   const excerpt   = post.excerpt || post.short_description || '';
   const category  = post.category || '';
   const date      = fmtDate(post.published_at || post.created_at);
-  const imgSrc    = post.cover_image || post.image || '';
+  const imgSrc    = imgPlaceholder(title);
 
   return `
     <a href="blog-post.html?slug=${encodeURIComponent(slug)}" class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col" aria-label="Read: ${title}">
@@ -66,7 +67,7 @@ function renderPost(post) {
 
   const img = document.getElementById('post-hero-img');
   if (img) {
-    img.src = post.cover_image || post.image || '';
+    img.src = imgPlaceholder(post.title || '');
     img.alt = post.title;
   }
 

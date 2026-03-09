@@ -14,8 +14,7 @@
  */
 
 import { api } from './api.js';
-
-// ── State ─────────────────────────────────────────────────────────────
+import { imgPlaceholder } from './placeholder.js';
 
 /** Full dataset fetched once on init; never mutated after that. */
 let allAttractions = [];
@@ -63,8 +62,7 @@ function categoryBadge(display) {
  * @returns {string}  - HTML string for one card.
  */
 function buildCard(a) {
-  const fallbackImg = 'images/photo-1547036967-23d11aacaee0.jpg';
-  const imgSrc = a.featured_image || fallbackImg;
+  const imgSrc = imgPlaceholder(a.name || '');
 
   if (viewMode === 'list') {
     // ── List view: landscape card ──────────────────────────────────

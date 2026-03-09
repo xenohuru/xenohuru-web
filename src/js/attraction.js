@@ -107,11 +107,10 @@ function initGallery(images) {
   // Build one <li> per image
   list.innerHTML = images.map(img => `
     <li class="splide__slide relative min-h-screen">
-      <img src="${img.image}"
+      <img src="${imgPlaceholder(img.caption || '')}"
            alt="${img.caption || ''}"
            class="absolute inset-0 w-full h-full object-cover object-center"
-           loading="eager"
-           onerror="this.onerror=null;this.src='${imgPlaceholder(img.caption || '')}'" />
+           loading="eager" />
     </li>
   `).join('');
 
@@ -349,7 +348,7 @@ async function loadSimilar(currentSlug, regionName) {
                data-aos="fade-up">
 
         <div class="relative aspect-video overflow-hidden">
-          <img src="${a.featured_image || 'images/photo-1547036967-23d11aacaee0.jpg'}"
+          <img src="${imgPlaceholder(a.name)}"
                alt="${a.name}"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                loading="lazy" />

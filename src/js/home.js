@@ -6,6 +6,7 @@
  * Depends on: Splide, AOS, and lucide being loaded as globals before DOMContentLoaded fires.
  */
 import { api } from './api.js';
+import { imgPlaceholder } from './placeholder.js';
 
 // ── Stats Bar (Live API counts) ───────────────────────────────────────
 
@@ -69,7 +70,7 @@ async function loadFeaturedAttractions() {
            class="attraction-card block rounded-2xl overflow-hidden relative h-96 group">
 
           <!-- Attraction image with a subtle zoom-on-hover effect -->
-          <img src="${a.featured_image || 'images/photo-1547036967-23d11aacaee0.jpg'}"
+          <img src="${imgPlaceholder(a.name)}"
                alt="${a.name}"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                loading="lazy" />

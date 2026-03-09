@@ -8,6 +8,7 @@
  */
 
 import { api } from './api.js';
+import { imgPlaceholder } from './placeholder.js';
 
 // ── State ─────────────────────────────────────────────────────────────
 let searchTimer = null;
@@ -39,7 +40,7 @@ function setSpinner(on) {
 // ── Card builders ─────────────────────────────────────────────────────
 
 function attractionCard(a) {
-    const img = a.featured_image || 'images/photo-1547036967-23d11aacaee0.jpg';
+    const img = imgPlaceholder(a.name || '');
     return `
     <a href="attraction.html?slug=${a.slug}"
        class="flex gap-4 bg-white rounded-2xl shadow-sm border border-gray-100 p-4
@@ -67,7 +68,7 @@ function attractionCard(a) {
 }
 
 function regionCard(r) {
-    const img = r.image || 'images/photo-1586348943529-beaae6c28db9.jpg';
+    const img = imgPlaceholder(r.name || '');
     return `
     <a href="regions.html#region-${r.slug}"
        class="flex gap-4 bg-white rounded-2xl shadow-sm border border-gray-100 p-4

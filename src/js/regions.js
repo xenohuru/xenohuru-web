@@ -13,6 +13,7 @@
  */
 
 import { api } from './api.js';
+import { imgPlaceholder } from './placeholder.js';
 
 // ── Badge helpers ─────────────────────────────────────────────────────
 
@@ -52,8 +53,7 @@ function getAttractionsByRegion(attractions, regionName) {
  * @returns {string} HTML string for one card.
  */
 function buildAttractionCard(attraction) {
-  const fallbackImg = 'images/photo-1547036967-23d11aacaee0.jpg';
-  const imgSrc      = attraction.featured_image || fallbackImg;
+  const imgSrc      = imgPlaceholder(attraction.name || '');
 
   return `
     <article class="group rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
@@ -105,8 +105,7 @@ function buildAttractionCard(attraction) {
  * @returns {string} HTML string for one complete region section.
  */
 function buildRegionSection(region, attractions, index) {
-  const fallbackImg = 'images/photo-1547036967-23d11aacaee0.jpg';
-  const imgSrc      = region.image || fallbackImg;
+  const imgSrc      = imgPlaceholder(region.name || '');
 
   // Alternate: even → image left; odd → image right
   const imageLeft = index % 2 === 0;

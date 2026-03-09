@@ -14,7 +14,7 @@ export const MOCK_DATA = {
       slug: "kilimanjaro",
       description:
         "The Kilimanjaro Region is home to Africa's highest peak, Mount Kilimanjaro (5,895m), and the gateway city of Moshi. The region sits on the slopes of the mountain, featuring lush coffee and banana plantations, Chagga cultural villages, and the spectacular Kilimanjaro National Park — a UNESCO World Heritage Site attracting thousands of trekkers annually.",
-      image: "images/photo-1621414050946-1b8b54914a61.jpg",
+      image: "",
       latitude: "-3.067400",
       longitude: "37.355600",
       attraction_count: 2,
@@ -26,7 +26,7 @@ export const MOCK_DATA = {
       slug: "arusha",
       description:
         "Arusha is Tanzania's safari capital and the gateway to many of Africa's most iconic wildlife destinations. Nestled between Mount Meru and Mount Kilimanjaro, the region encompasses Arusha National Park, Serengeti, Ngorongoro Crater, Lake Manyara, and Tarangire — making it the beating heart of Tanzania's northern safari circuit.",
-      image: "images/photo-1547036967-23d11aacaee0.jpg",
+      image: "",
       latitude: "-3.386900",
       longitude: "36.683000",
       attraction_count: 5,
@@ -38,7 +38,7 @@ export const MOCK_DATA = {
       slug: "zanzibar",
       description:
         "The Zanzibar Archipelago is a semi-autonomous region of Tanzania composed of Unguja (Zanzibar Island) and Pemba Island. Famous for its turquoise Indian Ocean waters, white-sand beaches, and the UNESCO-listed Stone Town — a Swahili, Arab, and colonial heritage hub. Zanzibar is also the world's leading producer of cloves.",
-      image: "images/photo-1586348943529-beaae6c28db9.jpg",
+      image: "",
       latitude: "-6.165200",
       longitude: "39.202200",
       attraction_count: 5,
@@ -59,7 +59,7 @@ export const MOCK_DATA = {
       difficulty_level: "extreme",
       difficulty_display: "Extreme",
       featured_image:
-        "images/photo-1621414050946-1b8b54914a61.jpg",
+        "",
       is_featured: true,
       best_time_to_visit: "January–March and June–October",
     },
@@ -75,7 +75,7 @@ export const MOCK_DATA = {
       difficulty_level: "easy",
       difficulty_display: "Easy",
       featured_image:
-        "images/photo-1516026672322-bc52d61a55d5.jpg",
+        "",
       is_featured: false,
       best_time_to_visit: "Year-round, though June–October is driest",
     },
@@ -91,7 +91,7 @@ export const MOCK_DATA = {
       difficulty_level: "easy",
       difficulty_display: "Easy",
       featured_image:
-        "images/photo-1547036967-23d11aacaee0.jpg",
+        "",
       is_featured: true,
       best_time_to_visit: "June–October for river crossings; January–March for calving",
     },
@@ -107,7 +107,7 @@ export const MOCK_DATA = {
       difficulty_level: "easy",
       difficulty_display: "Easy",
       featured_image:
-        "images/photo-1619711678715-6c1eb47a3553.jpg",
+        "",
       is_featured: true,
       best_time_to_visit: "Year-round; June–September for dry season game drives",
     },
@@ -123,7 +123,7 @@ export const MOCK_DATA = {
       difficulty_level: "easy",
       difficulty_display: "Easy",
       featured_image:
-        "images/photo-1520483691742-bada60a1edd6.jpg",
+        "",
       is_featured: false,
       best_time_to_visit: "June–October for maximum wildlife concentration",
     },
@@ -139,7 +139,7 @@ export const MOCK_DATA = {
       difficulty_level: "easy",
       difficulty_display: "Easy",
       featured_image:
-        "images/photo-1535941339077-2dd1c7963098.jpg",
+        "",
       is_featured: false,
       best_time_to_visit: "June–October and December–February",
     },
@@ -155,7 +155,7 @@ export const MOCK_DATA = {
       difficulty_level: "difficult",
       difficulty_display: "Difficult",
       featured_image:
-        "images/photo-1568393691622-c7ba131d63b4.jpg",
+        "",
       is_featured: false,
       best_time_to_visit: "June–February (dry seasons)",
     },
@@ -171,7 +171,7 @@ export const MOCK_DATA = {
       difficulty_level: "easy",
       difficulty_display: "Easy",
       featured_image:
-        "images/photo-1586348943529-beaae6c28db9.jpg",
+        "",
       is_featured: true,
       best_time_to_visit: "June–October and December–February",
     },
@@ -187,7 +187,7 @@ export const MOCK_DATA = {
       difficulty_level: "easy",
       difficulty_display: "Easy",
       featured_image:
-        "images/photo-1507525428034-b723cf961d3e.jpg",
+        "",
       is_featured: true,
       best_time_to_visit: "June–October and December–February",
     },
@@ -203,7 +203,7 @@ export const MOCK_DATA = {
       difficulty_level: "easy",
       difficulty_display: "Easy",
       featured_image:
-        "images/photo-1559523161-0fc0d8b38a7a.jpg",
+        "",
       is_featured: false,
       best_time_to_visit: "June–October and December–February",
     },
@@ -219,7 +219,7 @@ export const MOCK_DATA = {
       difficulty_level: "easy",
       difficulty_display: "Easy",
       featured_image:
-        "images/photo-1596040033229-a9821ebd058d.jpg",
+        "",
       is_featured: false,
       best_time_to_visit: "Year-round, harvest seasons offer more activity",
     },
@@ -235,7 +235,7 @@ export const MOCK_DATA = {
       difficulty_level: "easy",
       difficulty_display: "Easy",
       featured_image:
-        "images/photo-1535083783855-ade8a849ce28.jpg",
+        "",
       is_featured: false,
       best_time_to_visit: "Year-round; early morning for best primate sightings",
     },
@@ -252,7 +252,7 @@ export const MOCK_DATA = {
         slug: "kilimanjaro",
         description:
           "The Kilimanjaro Region is home to Africa's highest peak, Mount Kilimanjaro (5,895m), and the gateway city of Moshi. The region sits on the slopes of the mountain, featuring lush coffee and banana plantations, Chagga cultural villages, and the spectacular Kilimanjaro National Park — a UNESCO World Heritage Site attracting thousands of trekkers annually.",
-        image: "images/photo-1621414050946-1b8b54914a61.jpg",
+        image: "",
         latitude: "-3.067400",
         longitude: "37.355600",
         attraction_count: 2,
@@ -281,29 +281,29 @@ export const MOCK_DATA = {
       requires_guide: true,
       requires_permit: true,
       featured_image:
-        "images/photo-1621414050946-1b8b54914a61.jpg",
+        "",
       images: [
         {
           id: 1,
-          image: "images/photo-1621414050946-1b8b54914a61.jpg",
+          image: "",
           caption: "Kilimanjaro summit at dawn with the Rebmann Glacier",
           is_primary: true,
         },
         {
           id: 2,
-          image: "images/photo-1609198092458-38a293c7ac4b.jpg",
+          image: "",
           caption: "Trekkers ascending the Machame Route through moorland",
           is_primary: false,
         },
         {
           id: 3,
-          image: "images/photo-1574492867640-10ba7b2e2b38.jpg",
+          image: "",
           caption: "Alpine desert zone on the approach to Stella Point",
           is_primary: false,
         },
         {
           id: 4,
-          image: "images/photo-1516026672322-bc52d61a55d5.jpg",
+          image: "",
           caption: "Lush rainforest on the lower slopes of Kilimanjaro",
           is_primary: false,
         },
@@ -336,7 +336,7 @@ export const MOCK_DATA = {
         slug: "kilimanjaro",
         description:
           "The Kilimanjaro Region is home to Africa's highest peak, Mount Kilimanjaro (5,895m), and the gateway city of Moshi. The region sits on the slopes of the mountain, featuring lush coffee and banana plantations, Chagga cultural villages, and the spectacular Kilimanjaro National Park — a UNESCO World Heritage Site attracting thousands of trekkers annually.",
-        image: "images/photo-1621414050946-1b8b54914a61.jpg",
+        image: "",
         latitude: "-3.067400",
         longitude: "37.355600",
         attraction_count: 2,
@@ -365,23 +365,23 @@ export const MOCK_DATA = {
       requires_guide: true,
       requires_permit: false,
       featured_image:
-        "images/photo-1516026672322-bc52d61a55d5.jpg",
+        "",
       images: [
         {
           id: 1,
-          image: "images/photo-1516026672322-bc52d61a55d5.jpg",
+          image: "",
           caption: "Coffee plantation on the Kilimanjaro slopes",
           is_primary: true,
         },
         {
           id: 2,
-          image: "images/photo-1559523161-0fc0d8b38a7a.jpg",
+          image: "",
           caption: "Traditional Chagga village homestead",
           is_primary: false,
         },
         {
           id: 3,
-          image: "images/photo-1535083783855-ade8a849ce28.jpg",
+          image: "",
           caption: "Local guide demonstrating traditional coffee processing",
           is_primary: false,
         },
@@ -414,7 +414,7 @@ export const MOCK_DATA = {
         slug: "arusha",
         description:
           "Arusha is Tanzania's safari capital and the gateway to many of Africa's most iconic wildlife destinations. Nestled between Mount Meru and Mount Kilimanjaro, the region encompasses Arusha National Park, Serengeti, Ngorongoro Crater, Lake Manyara, and Tarangire — making it the beating heart of Tanzania's northern safari circuit.",
-        image: "images/photo-1547036967-23d11aacaee0.jpg",
+        image: "",
         latitude: "-3.386900",
         longitude: "36.683000",
         attraction_count: 5,
@@ -443,29 +443,29 @@ export const MOCK_DATA = {
       requires_guide: false,
       requires_permit: false,
       featured_image:
-        "images/photo-1547036967-23d11aacaee0.jpg",
+        "",
       images: [
         {
           id: 1,
-          image: "images/photo-1547036967-23d11aacaee0.jpg",
+          image: "",
           caption: "Wildebeest crossing the Mara River during the Great Migration",
           is_primary: true,
         },
         {
           id: 2,
-          image: "images/photo-1519659528534-7fd733a832a0.jpg",
+          image: "",
           caption: "Lion pride resting on the Serengeti plains at sunset",
           is_primary: false,
         },
         {
           id: 3,
-          image: "images/photo-1466721591366-2d5fba72006d.jpg",
+          image: "",
           caption: "Cheetah scanning the savannah from a termite mound",
           is_primary: false,
         },
         {
           id: 4,
-          image: "images/photo-1575550959106-5a7defe28b56.jpg",
+          image: "",
           caption: "Herd of elephants near a waterhole in the dry season",
           is_primary: false,
         },
@@ -498,7 +498,7 @@ export const MOCK_DATA = {
         slug: "arusha",
         description:
           "Arusha is Tanzania's safari capital and the gateway to many of Africa's most iconic wildlife destinations. Nestled between Mount Meru and Mount Kilimanjaro, the region encompasses Arusha National Park, Serengeti, Ngorongoro Crater, Lake Manyara, and Tarangire — making it the beating heart of Tanzania's northern safari circuit.",
-        image: "images/photo-1547036967-23d11aacaee0.jpg",
+        image: "",
         latitude: "-3.386900",
         longitude: "36.683000",
         attraction_count: 5,
@@ -527,23 +527,23 @@ export const MOCK_DATA = {
       requires_guide: true,
       requires_permit: false,
       featured_image:
-        "images/photo-1619711678715-6c1eb47a3553.jpg",
+        "",
       images: [
         {
           id: 1,
-          image: "images/photo-1619711678715-6c1eb47a3553.jpg",
+          image: "",
           caption: "Panoramic view of the Ngorongoro Crater from the rim",
           is_primary: true,
         },
         {
           id: 2,
-          image: "images/photo-1516426122078-c23e76319801.jpg",
+          image: "",
           caption: "Black rhino grazing on the crater floor — a critically endangered species",
           is_primary: false,
         },
         {
           id: 3,
-          image: "images/photo-1535941339077-2dd1c7963098.jpg",
+          image: "",
           caption: "Flamingos at Lake Magadi inside the crater",
           is_primary: false,
         },
@@ -576,7 +576,7 @@ export const MOCK_DATA = {
         slug: "arusha",
         description:
           "Arusha is Tanzania's safari capital and the gateway to many of Africa's most iconic wildlife destinations. Nestled between Mount Meru and Mount Kilimanjaro, the region encompasses Arusha National Park, Serengeti, Ngorongoro Crater, Lake Manyara, and Tarangire — making it the beating heart of Tanzania's northern safari circuit.",
-        image: "images/photo-1547036967-23d11aacaee0.jpg",
+        image: "",
         latitude: "-3.386900",
         longitude: "36.683000",
         attraction_count: 5,
@@ -605,23 +605,23 @@ export const MOCK_DATA = {
       requires_guide: false,
       requires_permit: false,
       featured_image:
-        "images/photo-1520483691742-bada60a1edd6.jpg",
+        "",
       images: [
         {
           id: 1,
-          image: "images/photo-1520483691742-bada60a1edd6.jpg",
+          image: "",
           caption: "Elephant herd beside a baobab tree in Tarangire",
           is_primary: true,
         },
         {
           id: 2,
-          image: "images/photo-1575550959106-5a7defe28b56.jpg",
+          image: "",
           caption: "Large elephant bull at the Tarangire River",
           is_primary: false,
         },
         {
           id: 3,
-          image: "images/photo-1466721591366-2d5fba72006d.jpg",
+          image: "",
           caption: "Giraffes browsing on acacia trees in the golden afternoon light",
           is_primary: false,
         },
@@ -654,7 +654,7 @@ export const MOCK_DATA = {
         slug: "arusha",
         description:
           "Arusha is Tanzania's safari capital and the gateway to many of Africa's most iconic wildlife destinations. Nestled between Mount Meru and Mount Kilimanjaro, the region encompasses Arusha National Park, Serengeti, Ngorongoro Crater, Lake Manyara, and Tarangire — making it the beating heart of Tanzania's northern safari circuit.",
-        image: "images/photo-1547036967-23d11aacaee0.jpg",
+        image: "",
         latitude: "-3.386900",
         longitude: "36.683000",
         attraction_count: 5,
@@ -683,17 +683,17 @@ export const MOCK_DATA = {
       requires_guide: false,
       requires_permit: false,
       featured_image:
-        "images/photo-1535941339077-2dd1c7963098.jpg",
+        "",
       images: [
         {
           id: 1,
-          image: "images/photo-1535941339077-2dd1c7963098.jpg",
+          image: "",
           caption: "Flamingos on the alkaline shallows of Lake Manyara",
           is_primary: true,
         },
         {
           id: 2,
-          image: "images/photo-1516426122078-c23e76319801.jpg",
+          image: "",
           caption: "Tree-climbing lion resting on an acacia branch — Lake Manyara's signature sight",
           is_primary: false,
         },
@@ -726,7 +726,7 @@ export const MOCK_DATA = {
         slug: "arusha",
         description:
           "Arusha is Tanzania's safari capital and the gateway to many of Africa's most iconic wildlife destinations. Nestled between Mount Meru and Mount Kilimanjaro, the region encompasses Arusha National Park, Serengeti, Ngorongoro Crater, Lake Manyara, and Tarangire — making it the beating heart of Tanzania's northern safari circuit.",
-        image: "images/photo-1547036967-23d11aacaee0.jpg",
+        image: "",
         latitude: "-3.386900",
         longitude: "36.683000",
         attraction_count: 5,
@@ -755,23 +755,23 @@ export const MOCK_DATA = {
       requires_guide: true,
       requires_permit: true,
       featured_image:
-        "images/photo-1568393691622-c7ba131d63b4.jpg",
+        "",
       images: [
         {
           id: 1,
-          image: "images/photo-1568393691622-c7ba131d63b4.jpg",
+          image: "",
           caption: "Mount Meru's ash cone viewed from inside the crater horseshoe",
           is_primary: true,
         },
         {
           id: 2,
-          image: "images/photo-1609198092458-38a293c7ac4b.jpg",
+          image: "",
           caption: "Trekkers on the summit ridge with Kilimanjaro in the distance",
           is_primary: false,
         },
         {
           id: 3,
-          image: "images/photo-1574492867640-10ba7b2e2b38.jpg",
+          image: "",
           caption: "Colobus monkeys in the Arusha National Park forest on the lower slopes",
           is_primary: false,
         },
@@ -804,7 +804,7 @@ export const MOCK_DATA = {
         slug: "zanzibar",
         description:
           "The Zanzibar Archipelago is a semi-autonomous region of Tanzania composed of Unguja (Zanzibar Island) and Pemba Island. Famous for its turquoise Indian Ocean waters, white-sand beaches, and the UNESCO-listed Stone Town — a Swahili, Arab, and colonial heritage hub. Zanzibar is also the world's leading producer of cloves.",
-        image: "images/photo-1586348943529-beaae6c28db9.jpg",
+        image: "",
         latitude: "-6.165200",
         longitude: "39.202200",
         attraction_count: 5,
@@ -833,23 +833,23 @@ export const MOCK_DATA = {
       requires_guide: false,
       requires_permit: false,
       featured_image:
-        "images/photo-1586348943529-beaae6c28db9.jpg",
+        "",
       images: [
         {
           id: 1,
-          image: "images/photo-1586348943529-beaae6c28db9.jpg",
+          image: "",
           caption: "Traditional carved wooden door in Stone Town — a symbol of Zanzibari craftsmanship",
           is_primary: true,
         },
         {
           id: 2,
-          image: "images/photo-1559523161-0fc0d8b38a7a.jpg",
+          image: "",
           caption: "The Old Fort (Ngome Kongwe) overlooking Stone Town's waterfront",
           is_primary: false,
         },
         {
           id: 3,
-          image: "images/photo-1596040033229-a9821ebd058d.jpg",
+          image: "",
           caption: "Forodhani Gardens at dusk with street food vendors and dhows in the harbour",
           is_primary: false,
         },
@@ -882,7 +882,7 @@ export const MOCK_DATA = {
         slug: "zanzibar",
         description:
           "The Zanzibar Archipelago is a semi-autonomous region of Tanzania composed of Unguja (Zanzibar Island) and Pemba Island. Famous for its turquoise Indian Ocean waters, white-sand beaches, and the UNESCO-listed Stone Town — a Swahili, Arab, and colonial heritage hub. Zanzibar is also the world's leading producer of cloves.",
-        image: "images/photo-1586348943529-beaae6c28db9.jpg",
+        image: "",
         latitude: "-6.165200",
         longitude: "39.202200",
         attraction_count: 5,
@@ -911,23 +911,23 @@ export const MOCK_DATA = {
       requires_guide: false,
       requires_permit: false,
       featured_image:
-        "images/photo-1507525428034-b723cf961d3e.jpg",
+        "",
       images: [
         {
           id: 1,
-          image: "images/photo-1507525428034-b723cf961d3e.jpg",
+          image: "",
           caption: "Nungwi beach at sunrise — pristine white sand and turquoise Indian Ocean",
           is_primary: true,
         },
         {
           id: 2,
-          image: "images/photo-1590523277543-a94d2e4eb00b.jpg",
+          image: "",
           caption: "Traditional dhow sailing past Nungwi at sunset",
           is_primary: false,
         },
         {
           id: 3,
-          image: "images/photo-1559523161-0fc0d8b38a7a.jpg",
+          image: "",
           caption: "Coral reef snorkelling just offshore from Nungwi",
           is_primary: false,
         },
@@ -955,7 +955,7 @@ export const MOCK_DATA = {
         slug: "zanzibar",
         description:
           "The Zanzibar Archipelago is a semi-autonomous region of Tanzania composed of Unguja (Zanzibar Island) and Pemba Island. Famous for its turquoise Indian Ocean waters, white-sand beaches, and the UNESCO-listed Stone Town — a Swahili, Arab, and colonial heritage hub. Zanzibar is also the world's leading producer of cloves.",
-        image: "images/photo-1586348943529-beaae6c28db9.jpg",
+        image: "",
         latitude: "-6.165200",
         longitude: "39.202200",
         attraction_count: 5,
@@ -984,23 +984,23 @@ export const MOCK_DATA = {
       requires_guide: false,
       requires_permit: false,
       featured_image:
-        "images/photo-1559523161-0fc0d8b38a7a.jpg",
+        "",
       images: [
         {
           id: 1,
-          image: "images/photo-1559523161-0fc0d8b38a7a.jpg",
+          image: "",
           caption: "Aldabra giant tortoise at Changuu Island sanctuary",
           is_primary: true,
         },
         {
           id: 2,
-          image: "images/photo-1507525428034-b723cf961d3e.jpg",
+          image: "",
           caption: "Crystal-clear waters and coral reef around Prison Island",
           is_primary: false,
         },
         {
           id: 3,
-          image: "images/photo-1586348943529-beaae6c28db9.jpg",
+          image: "",
           caption: "The historic prison building on Changuu Island",
           is_primary: false,
         },
@@ -1033,7 +1033,7 @@ export const MOCK_DATA = {
         slug: "zanzibar",
         description:
           "The Zanzibar Archipelago is a semi-autonomous region of Tanzania composed of Unguja (Zanzibar Island) and Pemba Island. Famous for its turquoise Indian Ocean waters, white-sand beaches, and the UNESCO-listed Stone Town — a Swahili, Arab, and colonial heritage hub. Zanzibar is also the world's leading producer of cloves.",
-        image: "images/photo-1586348943529-beaae6c28db9.jpg",
+        image: "",
         latitude: "-6.165200",
         longitude: "39.202200",
         attraction_count: 5,
@@ -1062,17 +1062,17 @@ export const MOCK_DATA = {
       requires_guide: true,
       requires_permit: false,
       featured_image:
-        "images/photo-1596040033229-a9821ebd058d.jpg",
+        "",
       images: [
         {
           id: 1,
-          image: "images/photo-1596040033229-a9821ebd058d.jpg",
+          image: "",
           caption: "Fresh cloves drying in the Zanzibar sun at a spice farm",
           is_primary: true,
         },
         {
           id: 2,
-          image: "images/photo-1516026672322-bc52d61a55d5.jpg",
+          image: "",
           caption: "Nutmeg, cinnamon, and cardamom displayed on a tour",
           is_primary: false,
         },
@@ -1105,7 +1105,7 @@ export const MOCK_DATA = {
         slug: "zanzibar",
         description:
           "The Zanzibar Archipelago is a semi-autonomous region of Tanzania composed of Unguja (Zanzibar Island) and Pemba Island. Famous for its turquoise Indian Ocean waters, white-sand beaches, and the UNESCO-listed Stone Town — a Swahili, Arab, and colonial heritage hub. Zanzibar is also the world's leading producer of cloves.",
-        image: "images/photo-1586348943529-beaae6c28db9.jpg",
+        image: "",
         latitude: "-6.165200",
         longitude: "39.202200",
         attraction_count: 5,
@@ -1134,23 +1134,23 @@ export const MOCK_DATA = {
       requires_guide: true,
       requires_permit: false,
       featured_image:
-        "images/photo-1535083783855-ade8a849ce28.jpg",
+        "",
       images: [
         {
           id: 1,
-          image: "images/photo-1535083783855-ade8a849ce28.jpg",
+          image: "",
           caption: "Zanzibar red colobus monkey — endemic to Zanzibar and found nowhere else on Earth",
           is_primary: true,
         },
         {
           id: 2,
-          image: "images/photo-1516026672322-bc52d61a55d5.jpg",
+          image: "",
           caption: "Mangrove boardwalk through Chwaka Bay wetlands",
           is_primary: false,
         },
         {
           id: 3,
-          image: "images/photo-1596040033229-a9821ebd058d.jpg",
+          image: "",
           caption: "Ancient groundwater forest trail in Jozani",
           is_primary: false,
         },
