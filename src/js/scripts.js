@@ -124,6 +124,10 @@ document.addEventListener('keydown', (e) => {
     const navT = document.getElementById('nav-time');
     if (navT) navT.textContent = `${h}:${m}`;
 
+    // Footer time
+    const footerT = document.getElementById('footer-time');
+    if (footerT) footerT.textContent = `${h}:${m}:${s} EAT`;
+
     // Footer time elements (class-based, works across all pages)
     document.querySelectorAll('.tz-time-value').forEach(el => el.textContent = `${h}:${m}:${s}`);
     document.querySelectorAll('.tz-date-value').forEach(el => el.textContent = dateStr);
@@ -227,14 +231,58 @@ document.addEventListener('keydown', (e) => {
     ro.observe(el);
   });
 
-  /* ─── Language Switcher ─── */
-  const ls = document.getElementById('lang-switcher');
-  if (ls) {
-    ls.value = localStorage.getItem('tz-lang') || 'en';
-    ls.addEventListener('change', e => {
-      localStorage.setItem('tz-lang', e.target.value);
-      document.documentElement.lang = e.target.value === 'sw' ? 'sw' : 'en';
-    });
+  /* ─── Google Translate Integration ─── */
+  // Inject hidden container for Google Translate widget
+  if (!document.getElementById('google_translate_element')) {
+    const gtDiv = document.createElement('div');
+    gtDiv.id = 'google_translate_element';
+    gtDiv.setAttribute('aria-hidden', 'true');
+    gtDiv.style.display = 'none';
+    document.body.appendChild(gtDiv);
+  }
+
+  // GT init callback (called by Google's script after load)
+  window.googleTranslateElementInit = function () {
+    if (typeof google === 'undefined' || !google.translate) return;
+    new google.translate.TranslateElement(
+      { pageLanguage: 'en', includedLanguages: 'en,sw', autoDisplay: false },
+      'google_translate_element'
+    );
+  };
+
+  // Dynamically load Google Translate script once
+  if (!document.querySelector('script[src*="translate.google.com"]')) {
+    const gtScript = document.createElement('script');
+    gtScript.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    gtScript.async = true;
+    document.head.appendChild(gtScript);
+  }
+
+  // Wire all lang-switcher selects (desktop + mobile) to set googtrans cookie and reload
+  function applyGoogleTranslate(lang) {
+    const cookieVal = lang === 'sw' ? '/en/sw' : '/en/en';
+    document.cookie = `googtrans=${cookieVal}; path=/`;
+    document.cookie = `googtrans=${cookieVal}; path=/; domain=.${location.hostname}`;
+    localStorage.setItem('tz-lang', lang);
+    window.location.reload();
+  }
+
+  // Restore saved language on page load
+  const savedLang = localStorage.getItem('tz-lang') || 'en';
+  document.querySelectorAll('#lang-switcher, [aria-label*="language"]').forEach(sel => {
+    if (sel.tagName === 'SELECT') {
+      sel.value = savedLang;
+      sel.addEventListener('change', e => applyGoogleTranslate(e.target.value));
+    }
+  });
+
+  // If SW was saved, ensure cookie is set for GT to pick up on load
+  if (savedLang === 'sw') {
+    const hasCookie = document.cookie.includes('googtrans=/en/sw');
+    if (!hasCookie) {
+      document.cookie = 'googtrans=/en/sw; path=/';
+      document.cookie = `googtrans=/en/sw; path=/; domain=.${location.hostname}`;
+    }
   }
 
 });
