@@ -16,6 +16,7 @@
  */
 
 import { api } from './api.js';
+import { imgPlaceholder, errorStateHTML, emptyStateHTML } from './placeholder.js';
 
 // ── Helpers ───────────────────────────────────────────────────────────
 
@@ -109,7 +110,8 @@ function initGallery(images) {
       <img src="${img.image}"
            alt="${img.caption || ''}"
            class="absolute inset-0 w-full h-full object-cover object-center"
-           loading="eager" />
+           loading="eager"
+           onerror="this.onerror=null;this.src='${imgPlaceholder(img.caption || '')}'" />
     </li>
   `).join('');
 
@@ -446,7 +448,203 @@ function initShare(a) {
   });
 }
 
-// ── 7. init ───────────────────────────────────────────────────────────
+// ── 7. loadReviews ────────────────────────────────────────────────────
+
+/**
+ * Fetches and renders visitor reviews for the attraction.
+ * @param {string} slug
+ */
+async function loadReviews(slug) {
+  const loadingEl = document.getElementById('reviews-loading');
+  const gridEl    = document.getElementById('reviews-grid');
+  const emptyEl   = document.getElementById('reviews-empty');
+  const errorEl   = document.getElementById('reviews-error');
+  const metaEl    = document.getElementById('reviews-meta');
+
+  if (!gridEl) return;
+
+  try {
+    const reviews = await api.getAttractionReviews(slug);
+
+    // Hide skeleton
+    if (loadingEl) loadingEl.classList.add('hidden');
+
+    if (!reviews?.length) {
+      if (emptyEl) {
+        emptyEl.innerHTML = emptyStateHTML({
+          icon: 'message-circle',
+          title: 'No reviews yet',
+          message: 'Be the first to share your experience!',
+        });
+        emptyEl.classList.remove('hidden');
+      }
+      return;
+    }
+
+    if (metaEl) metaEl.textContent = `${reviews.length} review${reviews.length !== 1 ? 's' : ''}`;
+
+    gridEl.innerHTML = reviews.map(buildReviewCard).join('');
+    gridEl.classList.remove('hidden');
+
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+    if (typeof AOS !== 'undefined') AOS.refresh();
+
+  } catch (err) {
+    console.warn('[attraction] loadReviews failed:', err.message);
+    if (loadingEl) loadingEl.classList.add('hidden');
+    if (errorEl) {
+      errorEl.innerHTML = errorStateHTML({
+        icon: 'message-circle-x',
+        title: "Couldn't load reviews",
+        message: 'Please try again later.',
+        retryId: 'retry-reviews',
+        retryText: 'Retry',
+      });
+      errorEl.classList.remove('hidden');
+
+      // Wire retry button
+      document.getElementById('retry-reviews')?.addEventListener('click', () => {
+        errorEl.classList.add('hidden');
+        errorEl.innerHTML = '';
+        loadingEl?.classList.remove('hidden');
+        loadReviews(slug);
+      });
+
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+  }
+}
+
+function buildReviewCard(review) {
+  const rating = review.rating || 0;
+  const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+  const name = review.reviewer_name || review.user || 'Anonymous';
+  const date = review.created_at
+    ? new Date(review.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+    : '';
+  return `
+    <div class="review-card bg-white rounded-2xl p-6 shadow-sm border border-tz-sand/30" data-aos="fade-up">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-10 h-10 rounded-full bg-tz-forest text-white flex items-center justify-center font-bold text-sm flex-shrink-0" aria-hidden="true">
+          ${name[0].toUpperCase()}
+        </div>
+        <div class="min-w-0">
+          <p class="font-semibold text-tz-dark text-sm truncate">${name}</p>
+          <p class="text-tz-muted text-xs">${date}</p>
+        </div>
+        <div class="ml-auto text-tz-savanna text-base tracking-tight flex-shrink-0" aria-label="${rating} out of 5 stars">${stars}</div>
+      </div>
+      <p class="text-tz-dark/80 text-sm leading-relaxed">${review.comment || review.content || ''}</p>
+    </div>`;
+}
+
+// ── 8. loadEndemicSpecies ─────────────────────────────────────────────
+
+/**
+ * Fetches and renders endemic species for the attraction.
+ * @param {string} slug
+ */
+async function loadEndemicSpecies(slug) {
+  const loadingEl = document.getElementById('endemic-loading');
+  const listEl    = document.getElementById('endemic-list');
+  const emptyEl   = document.getElementById('endemic-empty');
+
+  if (!listEl) return;
+
+  try {
+    const species = await api.getEndemicSpecies(slug);
+
+    if (loadingEl) loadingEl.classList.add('hidden');
+
+    if (!species?.length) {
+      if (emptyEl) emptyEl.classList.remove('hidden');
+      return;
+    }
+
+    listEl.innerHTML = species.map(buildSpeciesPill).join('');
+    listEl.classList.remove('hidden');
+
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+
+  } catch (err) {
+    console.warn('[attraction] loadEndemicSpecies failed:', err.message);
+    if (loadingEl) loadingEl.classList.add('hidden');
+    if (emptyEl) emptyEl.classList.remove('hidden');
+  }
+}
+
+function buildSpeciesPill(s) {
+  return `<span class="inline-flex items-center gap-1.5 bg-tz-sand text-tz-earth text-xs font-medium px-3 py-1.5 rounded-full border border-tz-sand/80">
+    <i data-lucide="leaf" class="w-3 h-3" aria-hidden="true"></i>${s.common_name || s.name}
+  </span>`;
+}
+
+// ── 9. loadOperatorsForAttraction ─────────────────────────────────────
+
+/**
+ * Fetches and renders tour operators for the attraction.
+ * @param {string} slug
+ */
+async function loadOperatorsForAttraction(slug) {
+  const loadingEl  = document.getElementById('operators-loading');
+  const listEl     = document.getElementById('operators-list');
+  const emptyEl    = document.getElementById('operators-empty');
+
+  if (!listEl) return;
+
+  try {
+    const operators = await api.getOperatorsByAttraction(slug);
+
+    if (loadingEl) loadingEl.classList.add('hidden');
+
+    if (!operators?.length) {
+      if (emptyEl) emptyEl.classList.remove('hidden');
+      return;
+    }
+
+    listEl.innerHTML = operators.map(buildOperatorCard).join('');
+    listEl.classList.remove('hidden');
+
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+    if (typeof AOS !== 'undefined') AOS.refresh();
+
+  } catch (err) {
+    console.warn('[attraction] loadOperatorsForAttraction failed:', err.message);
+    if (loadingEl) loadingEl.classList.add('hidden');
+    if (emptyEl) emptyEl.classList.remove('hidden');
+  }
+}
+
+function buildOperatorCard(op) {
+  return `
+    <article class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex flex-col gap-3" data-aos="fade-up">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl bg-tz-forest/10 flex items-center justify-center flex-shrink-0">
+          <i data-lucide="briefcase" class="w-5 h-5 text-tz-forest" aria-hidden="true"></i>
+        </div>
+        <div class="min-w-0">
+          <h4 class="font-semibold text-tz-dark text-sm truncate">${op.name}</h4>
+          ${op.operator_type_display || op.operator_type
+            ? `<p class="text-tz-muted text-xs mt-0.5">${op.operator_type_display || op.operator_type}</p>`
+            : ''}
+        </div>
+      </div>
+      ${op.short_description
+        ? `<p class="text-tz-muted text-xs leading-relaxed line-clamp-2">${op.short_description}</p>`
+        : ''}
+      ${op.website
+        ? `<a href="${op.website}" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-tz-forest text-xs font-semibold hover:underline mt-auto">
+             <i data-lucide="external-link" class="w-3 h-3" aria-hidden="true"></i> Visit website
+           </a>`
+        : `<a href="operators.html?slug=${op.slug}"
+              class="inline-flex items-center gap-1.5 text-tz-forest text-xs font-semibold hover:underline mt-auto">
+             <i data-lucide="arrow-right" class="w-3 h-3" aria-hidden="true"></i> View details
+           </a>`}
+    </article>`;
+}
+
+// ── 10. init ──────────────────────────────────────────────────────────
 
 /**
  * Main entry point. Called on DOMContentLoaded.
@@ -482,7 +680,21 @@ async function init() {
     // ── Populate DOM ──────────────────────────────────────────────
     populateDetail(attraction);
     initGallery(attraction.images);
-    populateWeather(weather);
+    try {
+      populateWeather(weather);
+    } catch (weatherErr) {
+      console.warn('[attraction] weather widget failed:', weatherErr.message);
+      const weatherWidget = document.getElementById('weather-widget');
+      if (weatherWidget) {
+        weatherWidget.innerHTML = errorStateHTML({
+          icon: 'cloud-off',
+          title: 'Weather unavailable',
+          message: 'Could not load weather data for this location.',
+          retryId: 'retry-weather',
+        });
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+      }
+    }
 
     // Update browser tab title
     document.title = `${attraction.name} — Xenohuru`;
@@ -493,6 +705,13 @@ async function init() {
 
     // Wire up the share button
     initShare(attraction);
+
+    // Load supplementary data concurrently — failures are handled internally
+    await Promise.allSettled([
+      loadReviews(slug),
+      loadEndemicSpecies(slug),
+      loadOperatorsForAttraction(slug),
+    ]);
 
   } catch (err) {
     // ── API error or slug not found ────────────────────────────────

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Create a free Xenohuru account and start exploring the wonders of Tanzania." />
+  <title>Create Account — Xenohuru</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-tz-forest:  #1A4731;
+      --color-tz-savanna: #C8903A;
+      --color-tz-sky:     #1E6FA8;
+      --color-tz-sand:    #F5E6C8;
+      --color-tz-earth:   #8B5E3C;
+      --color-tz-dark:    #111827;
+      --color-tz-muted:   #6B7280;
+      --color-tz-light:   #FAFAF8;
+      --font-display: "Playfair Display", serif;
+      --font-body:    "DM Sans", sans-serif;
+      --font-mono:    "Space Mono", monospace;
+    }
+  </style>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1A4731" />
+  <link rel="icon" type="image/svg+xml" href="images/favicons/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="96x96" href="images/favicons/favicon-96x96.png" />
+  <link rel="shortcut icon" href="images/favicons/favicon.ico" />
+  <link rel="apple-touch-icon" href="images/favicons/favicon-96x96.png" />
+</head>
+<body class="font-body text-tz-dark bg-tz-light">
+
+  <!-- Top accent stripe -->
+  <div class="h-[6px] bg-tz-forest" aria-hidden="true"></div>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2" aria-label="Xenohuru home">
+          <span class="w-8 h-8 rounded-full flex-shrink-0" style="background: linear-gradient(135deg,#1EB53A 33%,#FCD116 33% 66%,#00A3DD 66%);" aria-hidden="true"></span>
+          <span class="font-display text-xl font-bold text-tz-forest">Xenohuru</span>
+        </a>
+        <ul class="hidden md:flex items-center gap-8" role="list">
+          <li><a href="index.html" class="nav-link font-medium hover:text-tz-forest transition-colors">Home</a></li>
+          <li><a href="attractions.html" class="nav-link font-medium hover:text-tz-forest transition-colors">Attractions</a></li>
+          <li><a href="regions.html" class="nav-link font-medium hover:text-tz-forest transition-colors">Regions</a></li>
+          <li><a href="blog.html" class="nav-link font-medium hover:text-tz-forest transition-colors">Blog</a></li>
+          <li><a href="operators.html" class="nav-link font-medium hover:text-tz-forest transition-colors">Operators</a></li>
+          <li><a href="about.html" class="nav-link font-medium hover:text-tz-forest transition-colors">About</a></li>
+          <li id="nav-login-link"><a href="login.html" class="nav-link font-medium hover:text-tz-forest transition-colors">Login</a></li>
+          <li id="nav-profile-link" class="hidden"><a href="profile.html" class="nav-link font-medium hover:text-tz-forest transition-colors">Profile</a></li>
+        </ul>
+        <div class="hidden md:flex items-center gap-3">
+          <div class="lang-switcher text-tz-forest">
+            <select id="lang-switcher" class="text-tz-forest border-tz-forest/20" aria-label="Select language">
+              <option value="en">EN</option><option value="sw">SW</option><option value="de">DE</option><option value="fr">FR</option>
+            </select>
+          </div>
+          <a href="attractions.html" class="inline-flex items-center gap-2 bg-tz-forest text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-tz-forest/90 transition-colors">Explore Now</a>
+        </div>
+        <button id="mobile-toggle" class="md:hidden p-2 rounded-lg hover:bg-white/20 transition-colors" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="mobile-overlay" class="fixed inset-0 z-40 bg-black/50 opacity-0 transition-opacity duration-300" aria-hidden="true"></div>
+  <aside id="mobile-drawer" class="fixed top-0 left-0 z-50 h-full w-72 bg-white shadow-xl transition-transform duration-300" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="flex items-center justify-between p-4 border-b border-gray-100">
+      <a href="index.html" class="flex items-center gap-2 h-10" aria-label="Xenohuru home"><img src="images/favicons/favicon.svg" alt="Xenohuru" class="h-full" /></a>
+      <button id="mobile-close" class="p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Close menu"><i data-lucide="x" class="w-5 h-5"></i></button>
+    </div>
+    <nav class="p-4" aria-label="Mobile navigation links">
+      <ul class="flex flex-col gap-1" role="list">
+        <li><a href="index.html" class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Home</a></li>
+        <li><a href="attractions.html" class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Attractions</a></li>
+        <li><a href="regions.html" class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Regions</a></li>
+        <li><a href="blog.html" class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Blog</a></li>
+        <li><a href="operators.html" class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Operators</a></li>
+        <li><a href="about.html" class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">About</a></li>
+        <li id="mobile-nav-login-link"><a href="login.html" class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Login</a></li>
+        <li id="mobile-nav-profile-link" class="hidden"><a href="profile.html" class="nav-link block px-4 py-3 rounded-xl font-medium hover:bg-tz-sand hover:text-tz-forest transition-colors">Profile</a></li>
+      </ul>
+      <div class="mt-4 px-4">
+        <label class="text-xs text-tz-muted font-semibold uppercase tracking-wider">Language</label>
+        <select class="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2 text-sm" aria-label="Select language (mobile)">
+          <option value="en" selected>English</option>
+          <option value="sw">Kiswahili</option>
+        </select>
+      </div>
+      <a href="attractions.html" class="mt-6 mx-4 flex items-center justify-center gap-2 bg-tz-forest text-white font-semibold px-5 py-3 rounded-xl hover:bg-tz-forest/90 transition-colors">Explore Now</a>
+    </nav>
+  </aside>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <main class="min-h-screen bg-tz-light flex items-center justify-center px-4 py-20" id="main-content">
+    <div class="auth-card bg-white rounded-2xl p-8 shadow-lg max-w-md w-full" data-aos="fade-up" data-aos-duration="500">
+
+      <!-- Logo -->
+      <img src="images/favicons/favicon.svg" alt="Xenohuru" class="w-12 h-12 mx-auto mb-4" />
+
+      <!-- Heading -->
+      <h1 class="font-display text-3xl font-bold text-tz-dark text-center mb-2">Join Xenohuru</h1>
+      <p class="text-tz-muted text-center mb-8">Create your free account</p>
+
+      <!-- Error banner -->
+      <div id="register-error" class="hidden bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm mb-6" role="alert"></div>
+
+      <!-- Register form -->
+      <form id="register-form" novalidate>
+        <div class="space-y-5">
+
+          <!-- Username -->
+          <div>
+            <label for="reg-username" class="block text-sm font-semibold text-tz-dark mb-2">Username</label>
+            <input
+              type="text"
+              id="reg-username"
+              name="username"
+              required
+              autocomplete="username"
+              placeholder="e.g. safari_explorer"
+              class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-tz-forest/30 focus:border-tz-forest transition-colors"
+            />
+            <p class="mt-1 text-xs text-tz-muted">Letters, numbers, and underscores only.</p>
+            <p id="username-field-error" class="hidden mt-1 text-xs text-red-600"></p>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="reg-email" class="block text-sm font-semibold text-tz-dark mb-2">Email address</label>
+            <input
+              type="email"
+              id="reg-email"
+              name="email"
+              required
+              autocomplete="email"
+              placeholder="you@example.com"
+              class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-tz-forest/30 focus:border-tz-forest transition-colors"
+            />
+            <p id="email-field-error" class="hidden mt-1 text-xs text-red-600"></p>
+          </div>
+
+          <!-- First & Last Name -->
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="reg-first-name" class="block text-sm font-semibold text-tz-dark mb-2">First name</label>
+              <input
+                type="text"
+                id="reg-first-name"
+                name="first_name"
+                autocomplete="given-name"
+                placeholder="Amara"
+                class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-tz-forest/30 focus:border-tz-forest transition-colors"
+              />
+            </div>
+            <div>
+              <label for="reg-last-name" class="block text-sm font-semibold text-tz-dark mb-2">Last name</label>
+              <input
+                type="text"
+                id="reg-last-name"
+                name="last_name"
+                autocomplete="family-name"
+                placeholder="Mwangi"
+                class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-tz-forest/30 focus:border-tz-forest transition-colors"
+              />
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div>
+            <label for="reg-password" class="block text-sm font-semibold text-tz-dark mb-2">Password</label>
+            <div class="relative">
+              <input
+                type="password"
+                id="reg-password"
+                name="password"
+                required
+                autocomplete="new-password"
+                placeholder="Min. 8 characters"
+                class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-tz-forest/30 focus:border-tz-forest transition-colors pr-12"
+              />
+              <button
+                type="button"
+                id="toggle-reg-password"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-tz-muted hover:text-tz-dark transition-colors p-1"
+                aria-label="Toggle password visibility"
+              >
+                <i data-lucide="eye" class="w-5 h-5" id="toggle-reg-password-icon"></i>
+              </button>
+            </div>
+            <p id="password-field-error" class="hidden mt-1 text-xs text-red-600"></p>
+          </div>
+
+          <!-- Confirm Password -->
+          <div>
+            <label for="reg-confirm-password" class="block text-sm font-semibold text-tz-dark mb-2">Confirm password</label>
+            <div class="relative">
+              <input
+                type="password"
+                id="reg-confirm-password"
+                name="confirm_password"
+                required
+                autocomplete="new-password"
+                placeholder="Re-enter your password"
+                class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-tz-forest/30 focus:border-tz-forest transition-colors pr-20"
+              />
+              <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                <!-- Real-time match indicator -->
+                <span id="confirm-match-icon" class="hidden" aria-live="polite"></span>
+                <button
+                  type="button"
+                  id="toggle-confirm-password"
+                  class="text-tz-muted hover:text-tz-dark transition-colors p-1"
+                  aria-label="Toggle confirm password visibility"
+                >
+                  <i data-lucide="eye" class="w-5 h-5" id="toggle-confirm-password-icon"></i>
+                </button>
+              </div>
+            </div>
+            <p id="confirm-field-error" class="hidden mt-1 text-xs text-red-600"></p>
+          </div>
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            id="register-btn"
+            class="w-full bg-tz-forest text-white font-semibold py-3 rounded-xl hover:bg-tz-forest/90 active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            <svg id="register-spinner" class="hidden animate-spin w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M21 12a9 9 0 1 1-6.219-8.56" stroke-linecap="round"/>
+            </svg>
+            <span class="btn-text">Create Account</span>
+          </button>
+
+        </div>
+      </form>
+
+      <!-- Divider -->
+      <div class="flex items-center gap-3 my-6" aria-hidden="true">
+        <div class="flex-1 h-px bg-gray-200"></div>
+        <span class="text-xs text-tz-muted uppercase tracking-wider">or</span>
+        <div class="flex-1 h-px bg-gray-200"></div>
+      </div>
+
+      <!-- Footer link -->
+      <p class="text-center text-sm text-tz-muted">
+        Already have an account?
+        <a href="login.html" class="text-tz-forest font-semibold hover:underline">Sign in →</a>
+      </p>
+
+    </div>
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="bg-tz-dark text-white" aria-label="Site footer">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
+        <div class="md:col-span-2">
+          <a href="index.html" class="flex items-center gap-2 mb-4" aria-label="Xenohuru home">
+            <span class="w-8 h-8 rounded-full flex-shrink-0" style="background: linear-gradient(135deg,#1EB53A 33%,#FCD116 33% 66%,#00A3DD 66%);" aria-hidden="true"></span>
+            <span class="font-display text-lg font-bold">Xenohuru</span>
+          </a>
+          <p class="text-white/60 text-sm leading-relaxed mb-4">Your open-source guide to the wonders of Tanzania — built by the community, for the curious.</p>
+          <div class="tz-time time-display flex items-center gap-2 text-xs font-mono text-white/40">
+            <i data-lucide="clock" class="w-3 h-3"></i> <span class="tz-time-value">--:--:--</span> <span class="tz-date-value">---</span> <span class="text-tz-savanna">EAT</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-semibold text-white/90 mb-4 uppercase tracking-wider text-xs">Explore</h3>
+          <ul class="space-y-2 text-sm text-white/60" role="list">
+            <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="attractions.html" class="hover:text-white transition-colors">All Attractions</a></li>
+            <li><a href="regions.html" class="hover:text-white transition-colors">Regions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-white/90 mb-4 uppercase tracking-wider text-xs">Project</h3>
+          <ul class="space-y-2 text-sm text-white/60" role="list">
+            <li><a href="about.html" class="hover:text-white transition-colors">About / Contributors</a></li>
+            <li><a href="sponsor.html" class="hover:text-white transition-colors">Sponsor</a></li>
+            <li><a href="https://github.com/xenohuru/xenohuru-web" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-white transition-colors"><i data-lucide="github" class="w-4 h-4"></i> GitHub</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-white/90 mb-4 uppercase tracking-wider text-xs">Connect</h3>
+          <ul class="space-y-2 text-sm text-white/60" role="list">
+            <li><a href="https://github.com/xenohuru/xenohuru-web" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-white transition-colors"><i data-lucide="github" class="w-4 h-4"></i> GitHub</a></li>
+            <li><a href="mailto:hello@tztourism.example" class="flex items-center gap-2 hover:text-white transition-colors"><i data-lucide="mail" class="w-4 h-4"></i> Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-white/40 text-sm">
+        <p>&copy; <span class="current-year"></span> Xenohuru. Open source under MIT License.</p>
+        <div class="flex items-center gap-4">
+          <a href="about.html" class="hover:text-white transition-colors">About</a>
+          <a href="sponsor.html" class="hover:text-white transition-colors">Sponsor</a>
+          <a href="https://github.com/xenohuru/xenohuru-web" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors"><i data-lucide="github" class="w-4 h-4"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 z-50 w-12 h-12 bg-tz-forest text-white rounded-full shadow-lg flex items-center justify-center opacity-0 transition-all duration-300 hover:bg-tz-forest/90" aria-label="Back to top">
+    <i data-lucide="chevron-up" class="w-5 h-5"></i>
+  </button>
+
+  <!-- ═══ SCRIPTS ═══ -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script type="module" src="js/scripts.js"></script>
+
+  <script type="module">
+    import { register, initAuthState } from './js/auth.js';
+
+    // ── Helpers ──────────────────────────────────────────────────────────────
+
+    function showFieldError(id, msg) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.textContent = msg;
+      el.classList.remove('hidden');
+    }
+
+    function clearFieldError(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.textContent = '';
+      el.classList.add('hidden');
+    }
+
+    function setupPasswordToggle(btnId, inputId, iconId) {
+      document.getElementById(btnId).addEventListener('click', () => {
+        const input = document.getElementById(inputId);
+        const icon  = document.getElementById(iconId);
+        const isHidden = input.type === 'password';
+        input.type = isHidden ? 'text' : 'password';
+        icon.setAttribute('data-lucide', isHidden ? 'eye-off' : 'eye');
+        if (window.lucide) lucide.createIcons();
+      });
+    }
+
+    // ── Init ─────────────────────────────────────────────────────────────────
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initAuthState();
+
+      // Password visibility toggles
+      setupPasswordToggle('toggle-reg-password',     'reg-password',         'toggle-reg-password-icon');
+      setupPasswordToggle('toggle-confirm-password', 'reg-confirm-password', 'toggle-confirm-password-icon');
+
+      // Real-time password match indicator
+      const confirmInput  = document.getElementById('reg-confirm-password');
+      const matchIcon     = document.getElementById('confirm-match-icon');
+
+      confirmInput.addEventListener('input', () => {
+        const pw  = document.getElementById('reg-password').value;
+        const cpw = confirmInput.value;
+        if (!cpw) {
+          matchIcon.classList.add('hidden');
+          matchIcon.innerHTML = '';
+          return;
+        }
+        matchIcon.classList.remove('hidden');
+        if (pw === cpw) {
+          matchIcon.innerHTML = '<i data-lucide="circle-check" class="w-4 h-4 text-green-500"></i>';
+        } else {
+          matchIcon.innerHTML = '<i data-lucide="circle-x" class="w-4 h-4 text-red-400"></i>';
+        }
+        if (window.lucide) lucide.createIcons();
+      });
+
+      // ── Form submit ────────────────────────────────────────────────────────
+
+      document.getElementById('register-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const username  = document.getElementById('reg-username').value.trim();
+        const email     = document.getElementById('reg-email').value.trim();
+        const firstName = document.getElementById('reg-first-name').value.trim();
+        const lastName  = document.getElementById('reg-last-name').value.trim();
+        const password  = document.getElementById('reg-password').value;
+        const confirm   = document.getElementById('reg-confirm-password').value;
+
+        const btn       = document.getElementById('register-btn');
+        const spinner   = document.getElementById('register-spinner');
+        const errorEl   = document.getElementById('register-error');
+
+        // Reset banners and field errors
+        errorEl.classList.add('hidden');
+        errorEl.textContent = '';
+        clearFieldError('username-field-error');
+        clearFieldError('email-field-error');
+        clearFieldError('password-field-error');
+        clearFieldError('confirm-field-error');
+
+        // ── Client-side validation ─────────────────────────────────────────
+
+        let valid = true;
+
+        if (!username) {
+          showFieldError('username-field-error', 'Username is required.');
+          valid = false;
+        }
+
+        if (!email || !email.includes('@')) {
+          showFieldError('email-field-error', 'Please enter a valid email address.');
+          valid = false;
+        }
+
+        if (password.length < 8) {
+          showFieldError('password-field-error', 'Password must be at least 8 characters.');
+          valid = false;
+        }
+
+        if (password !== confirm) {
+          showFieldError('confirm-field-error', 'Passwords do not match.');
+          valid = false;
+        }
+
+        if (!valid) {
+          errorEl.textContent = 'Please fix the errors above before continuing.';
+          errorEl.classList.remove('hidden');
+          return;
+        }
+
+        // ── Submit ─────────────────────────────────────────────────────────
+
+        btn.disabled = true;
+        spinner.classList.remove('hidden');
+        btn.querySelector('.btn-text').textContent = 'Creating account…';
+
+        try {
+          await register({
+            username,
+            email,
+            first_name: firstName,
+            last_name:  lastName,
+            password,
+          });
+          // register() redirects on success — code below won't run
+        } catch (err) {
+          errorEl.textContent = err.message || 'Registration failed. Please try again.';
+          errorEl.classList.remove('hidden');
+          btn.disabled = false;
+          spinner.classList.add('hidden');
+          btn.querySelector('.btn-text').textContent = 'Create Account';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

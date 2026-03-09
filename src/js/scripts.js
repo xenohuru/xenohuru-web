@@ -3,7 +3,12 @@
  * Loaded on every page via defer.
  */
 
+import { initImageErrorHandling } from './placeholder.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+
+  /* ─── Global image error handling (placeholder swap) ─── */
+  initImageErrorHandling();
 
   /* ─── Lucide Icons ─── */
   if (typeof lucide !== 'undefined') lucide.createIcons();

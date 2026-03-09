@@ -640,3 +640,172 @@ body {
     max-width: 75vw;
   }
 }
+
+/* =============================================================
+   Image Placeholder & Error States
+   ============================================================= */
+
+/* Skeleton image loader — shimmer animation */
+.skeleton-img {
+  background: linear-gradient(
+    90deg,
+    #F5E6C8 25%,
+    #EDD9A3 50%,
+    #F5E6C8 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: 4px;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Skeleton blocks — generic content loading placeholders */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #F0EBE0 25%,
+    #E5DDD0 50%,
+    #F0EBE0 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: 6px;
+}
+
+/* Image that failed to load */
+img.img-error {
+  opacity: 0.85;
+  filter: grayscale(0.2);
+}
+
+/* Placeholder image container (when there's no src at all) */
+.img-placeholder {
+  background-color: #F5E6C8;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(200,144,58,.15) 19px, rgba(200,144,58,.15) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(200,144,58,.15) 19px, rgba(200,144,58,.15) 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8B5E3C;
+  font-size: 0.75rem;
+  text-align: center;
+  gap: 8px;
+  flex-direction: column;
+  border: 1px solid rgba(200,144,58,.2);
+}
+.img-placeholder svg {
+  opacity: 0.4;
+}
+
+/* Data-grid placeholder — larger block for hero/section areas */
+.data-grid-placeholder {
+  background-color: #F5E6C8;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(200,144,58,.12) 39px, rgba(200,144,58,.12) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(200,144,58,.12) 39px, rgba(200,144,58,.12) 40px);
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.data-grid-placeholder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26,71,49,.06) 0%, rgba(200,144,58,.08) 100%);
+}
+
+/* Error/empty state containers */
+.state-error,
+.state-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 4rem 1.5rem;
+  text-align: center;
+  min-height: 200px;
+}
+.state-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #F5E6C8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Blog card image */
+.blog-card-img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  background: #F5E6C8;
+}
+
+/* Operator / Partner card */
+.operator-card,
+.partner-card {
+  transition: transform 0.25s cubic-bezier(0.23,1,0.32,1), box-shadow 0.25s cubic-bezier(0.23,1,0.32,1);
+}
+.operator-card:hover,
+.partner-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(26,71,49,.12);
+}
+
+/* Review cards */
+.review-card {
+  position: relative;
+}
+.review-card::before {
+  content: '"';
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  font-size: 4rem;
+  color: #C8903A;
+  opacity: 0.2;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+}
+
+/* Auth form card */
+.auth-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(200,144,58,.2);
+}
+
+/* Input focus states for forms */
+.form-input:focus {
+  outline: none;
+  border-color: #1A4731;
+  box-shadow: 0 0 0 3px rgba(26,71,49,.12);
+}
+.form-input-error {
+  border-color: #EF4444 !important;
+  box-shadow: 0 0 0 3px rgba(239,68,68,.1) !important;
+}
+
+/* Feedback form success banner */
+.feedback-success {
+  background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+  border: 1px solid #34D399;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: slideInDown 0.4s ease;
+}
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
