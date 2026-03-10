@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://twenzetusafari.netlify.app/sitemap.xml
+Sitemap: https://x.xenohuru.workers.dev/sitemap.xml

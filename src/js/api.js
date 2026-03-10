@@ -4,7 +4,7 @@
  * Tries the live Django REST API first.
  * Falls back to MOCK_DATA if API is unreachable (offline / not deployed).
  *
- * Live API:  https://xenohuru-api.onrender.com
+ * Live API:  http://159.65.119.182
  * Local dev: http://localhost:8002
  * Toggle: set USE_MOCK = true to always use mock data during development.
  */
@@ -13,7 +13,7 @@ import { MOCK_DATA } from './mockdata.js';
 
 // Prefer local backend when running locally, fall back to production
 const LOCAL_API  = 'http://localhost:8002';
-const PROD_API   = 'https://xenohuru-u5rbldnb.b4a.run';
+const PROD_API   = 'http://159.65.119.182';
 const API_BASE   = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? LOCAL_API
   : PROD_API;

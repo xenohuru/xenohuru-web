@@ -4,10 +4,10 @@
 //           cross-origin, Network-only (with offline JSON) for API
 // ============================================================
 
-const CACHE_NAME = 'twenzetu-safari-v2';
+const CACHE_NAME = 'xenohuru-v3';
 
 // Live API base
-const API_HOST = 'cf89615f228bb45cc805447510de80.pythonanywhere.com';
+const API_HOST = '159.65.119.182';
 
 // Static assets to pre-cache during install
 const PRECACHE_URLS = [
