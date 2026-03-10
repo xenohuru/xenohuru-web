@@ -4,17 +4,18 @@
  * Tries the live Django REST API first.
  * Falls back to MOCK_DATA if API is unreachable (offline / not deployed).
  *
- * Live API:  http://159.65.119.182
- * Local dev: http://localhost:8002
+ * Production: API calls go to /api/* (same origin), proxied by the Cloudflare
+ *             Worker to http://159.65.119.182 — avoids mixed-content blocking.
+ * Local dev:  http://localhost:8002 (direct to local Django server)
  * Toggle: set USE_MOCK = true to always use mock data during development.
  */
 
 import { MOCK_DATA } from './mockdata.js';
 
-// Prefer local backend when running locally, fall back to production
-const LOCAL_API  = 'http://localhost:8002';
-const PROD_API   = 'http://159.65.119.182';
-const API_BASE   = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+// Local dev hits Django directly; production uses same-origin proxy via worker.js
+const LOCAL_API = 'http://localhost:8002';
+const PROD_API  = '';  // empty = same origin, proxied by Cloudflare Worker
+const API_BASE  = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? LOCAL_API
   : PROD_API;
 
