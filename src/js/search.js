@@ -42,7 +42,7 @@ function setSpinner(on) {
 function attractionCard(a) {
     const img = imgPlaceholder(a.name || '');
     return `
-    <a href="attraction.html?slug=${a.slug}"
+    <a href="/attraction?slug=${a.slug}"
        class="flex gap-4 bg-white rounded-2xl shadow-sm border border-gray-100 p-4
               hover:shadow-md hover:-translate-y-0.5 transition-all group"
        data-aos="fade-up">
@@ -70,7 +70,7 @@ function attractionCard(a) {
 function regionCard(r) {
     const img = imgPlaceholder(r.name || '');
     return `
-    <a href="regions.html#region-${r.slug}"
+    <a href="/regions#region-${r.slug}"
        class="flex gap-4 bg-white rounded-2xl shadow-sm border border-gray-100 p-4
               hover:shadow-md hover:-translate-y-0.5 transition-all group"
        data-aos="fade-up">

@@ -75,7 +75,7 @@ function buildAttractionCard(attraction) {
         <h4 class="font-display text-sm font-bold text-tz-dark leading-snug">
           ${attraction.name}
         </h4>
-        <a href="attraction.html?slug=${attraction.slug}"
+        <a href="/attraction?slug=${attraction.slug}"
            class="shrink-0 text-tz-forest hover:text-tz-forest/70 transition-colors"
            aria-label="View details for ${attraction.name}">
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -173,7 +173,7 @@ function buildRegionSection(region, attractions, index) {
 
           <!-- "View Attractions" CTA — links to attractions.html pre-filtered -->
           <div>
-            <a href="attractions.html?region=${encodeURIComponent(region.name)}"
+            <a href="/attractions?region=${encodeURIComponent(region.name)}"
                class="inline-flex items-center gap-2 bg-tz-forest text-white font-semibold
                       px-6 py-3 rounded-full hover:bg-tz-forest/90 transition-colors shadow-sm">
               View Attractions
@@ -197,7 +197,7 @@ function buildRegionSection(region, attractions, index) {
       </div>
 
       <!-- Subtle divider (hidden on last item via CSS sibling, handled by spacing) -->
-      <div class="mt-16 border-b border-gray-100" aria-hidden="true"></div>
+      <div class="mt-16 border-b border-gray-100" aria-hidden="true"/></div>
 
     </section>
   `;
@@ -241,7 +241,7 @@ async function init() {
 
     // ── ?highlight=<slug> — scroll to a specific region ────────────
     // Useful when linking here from another page with a region anchor,
-    // e.g. regions.html?highlight=zanzibar
+    // e.g. regions?highlight=zanzibar
     const params    = new URLSearchParams(window.location.search);
     const highlight = params.get('highlight');
     if (highlight) {

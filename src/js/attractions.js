@@ -106,7 +106,7 @@ function buildCard(a) {
                 ${a.best_time_to_visit}
               </span>
             </div>
-            <a href="attraction.html?slug=${a.slug}"
+            <a href="/attraction?slug=${a.slug}"
                class="text-sm font-semibold text-tz-forest hover:text-tz-forest/80
                       flex items-center gap-1 transition-colors">
               View Details
@@ -160,7 +160,7 @@ function buildCard(a) {
               ${a.best_time_to_visit}
             </span>
           </div>
-          <a href="attraction.html?slug=${a.slug}"
+          <a href="/attraction?slug=${a.slug}"
              class="text-sm font-semibold text-tz-forest hover:text-tz-forest/80
                     flex items-center gap-1 transition-colors">
             View Details

@@ -66,7 +66,7 @@ async function loadFeaturedAttractions() {
     // Build each slide as a <li> — Splide requires this structure
     list.innerHTML = attractions.map(a => `
       <li class="splide__slide">
-        <a href="attraction.html?slug=${a.slug}"
+        <a href="/attraction?slug=${a.slug}"
            class="attraction-card block rounded-2xl overflow-hidden relative h-96 group">
 
           <!-- Attraction image with a subtle zoom-on-hover effect -->
@@ -140,7 +140,7 @@ async function loadRegions() {
 
     grid.innerHTML = regions.map(r => `
       <div data-aos="fade-up" class="group">
-        <a href="regions.html#region-${r.slug}"
+        <a href="/regions#region-${r.slug}"
            class="block rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
 
           <!-- Region image with aspect-video (16/9) crop -->

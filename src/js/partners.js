@@ -59,7 +59,7 @@ function renderPartners(partners) {
     });
     emptyEl.innerHTML += `
       <div class="mt-4">
-        <a href="contact.html" class="inline-flex items-center gap-2 bg-tz-sky text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-tz-sky/90 transition-colors">
+        <a href="/contact" class="inline-flex items-center gap-2 bg-tz-sky text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-tz-sky/90 transition-colors">
           <i data-lucide="message-circle" class="w-4 h-4" aria-hidden="true"></i> Get in Touch
         </a>
       </div>

@@ -72,7 +72,7 @@ function buildCard(post) {
         </div>
         <h2 class="font-display text-xl font-bold text-tz-dark mb-2 line-clamp-2 leading-snug">${title}</h2>
         <p class="text-tz-muted text-sm leading-relaxed line-clamp-3 mb-4 flex-1">${excerpt}</p>
-        <a href="blog-post.html?slug=${encodeURIComponent(slug)}" class="inline-flex items-center gap-1.5 text-tz-forest font-semibold text-sm hover:text-tz-savanna transition-colors mt-auto" aria-label="Read more about ${title}">
+        <a href="/blog-post?slug=${encodeURIComponent(slug)}" class="inline-flex items-center gap-1.5 text-tz-forest font-semibold text-sm hover:text-tz-savanna transition-colors mt-auto" aria-label="Read more about ${title}">
           Read More <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
         </a>
       </div>

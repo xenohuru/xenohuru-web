@@ -36,7 +36,7 @@ function relatedCard(post) {
   const imgSrc    = imgPlaceholder(title);
 
   return `
-    <a href="blog-post.html?slug=${encodeURIComponent(slug)}" class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col" aria-label="Read: ${title}">
+    <a href="/blog-post?slug=${encodeURIComponent(slug)}" class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col" aria-label="Read: ${title}">
       <div class="relative aspect-video bg-tz-sand data-grid-placeholder overflow-hidden">
         <img src="${imgSrc}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-fallback="placeholder" loading="lazy" />
         ${category ? `<span class="absolute top-2 left-2 bg-tz-forest text-white text-xs px-2 py-0.5 rounded-full">${cap(category)}</span>` : ''}

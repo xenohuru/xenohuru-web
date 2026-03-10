@@ -75,14 +75,14 @@ function difficultyBadge(level, display) {
  * @returns {string} HTML string
  */
 function categoryBadge(display) {
-  return `<span class="badge-category text-xs font-semibold px-2.5 py-1 rounded-full">${display}</span>`;
+  return `<span class="badge-category text-xs font-semibold px-2.5 py-1 rounded-full"/>${display}</span>`;
 }
 
 // ── 1. getSlug ────────────────────────────────────────────────────────
 
 /**
  * Reads the `slug` query parameter from the current page URL.
- * e.g. attraction.html?slug=serengeti-national-park → "serengeti-national-park"
+ * e.g. attraction?slug=serengeti-national-park → "serengeti-national-park"
  * @returns {string|null}
  */
 function getSlug() {
@@ -224,7 +224,7 @@ function populateDetail(a) {
         </li>
       `).join('');
     } else {
-      tipsList.innerHTML = `<li class="text-tz-muted text-sm">No tips available yet.</li>`;
+      tipsList.innerHTML = `<li class="text-tz-muted text-sm"/>No tips available yet.</li>`;
     }
   }
 
@@ -237,7 +237,7 @@ function populateDetail(a) {
     // Build OSM embed URL with a marker pin
     const delta = 0.05; // ~5 km bounding box half-side
     const bbox = `${lng - delta},${lat - delta},${lng + delta},${lat + delta}`;
-    const osmEmbed = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lng}`;
+    const osmEmbed = `https://www.openstreetmap.org/export/embed?bbox=${bbox}&layer=mapnik&marker=${lat},${lng}`;
     const osmFull  = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=13/${lat}/${lng}`;
 
     const mapFrame = document.getElementById('osm-map');
@@ -371,7 +371,7 @@ async function loadSimilar(currentSlug, regionName) {
             <span class="badge-${a.difficulty_level} text-xs font-semibold px-2 py-0.5 rounded-full capitalize">
               ${a.difficulty_level}
             </span>
-            <a href="attraction.html?slug=${a.slug}"
+            <a href="/attraction?slug=${a.slug}"
                class="text-sm font-semibold text-tz-forest hover:text-tz-forest/80
                       flex items-center gap-1 transition-colors">
               View
@@ -636,7 +636,7 @@ function buildOperatorCard(op) {
               class="inline-flex items-center gap-1.5 text-tz-forest text-xs font-semibold hover:underline mt-auto">
              <i data-lucide="external-link" class="w-3 h-3" aria-hidden="true"></i> Visit website
            </a>`
-        : `<a href="operators.html?slug=${op.slug}"
+        : `<a href="/operators?slug=${op.slug}"
               class="inline-flex items-center gap-1.5 text-tz-forest text-xs font-semibold hover:underline mt-auto">
              <i data-lucide="arrow-right" class="w-3 h-3" aria-hidden="true"></i> View details
            </a>`}
@@ -721,7 +721,7 @@ async function init() {
     setHTML('attraction-region',
       `<span class="text-white/70 text-base">
          We couldn't load this attraction. Please check the URL or
-         <a href="attractions.html" class="underline hover:text-white">browse all attractions</a>.
+         <a href="/attractions" class="underline hover:text-white">browse all attractions</a>.
        </span>`
     );
 
