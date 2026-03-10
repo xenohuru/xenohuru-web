@@ -5,9 +5,10 @@
   "observability": {
     "enabled": true
   },
+  "main": "worker.js",
   "assets": {
     "directory": "src",
-    "html_handling": "drop-html-extension",
+    "binding": "ASSETS",
     "not_found_handling": "404-page"
   },
   "compatibility_flags": [
