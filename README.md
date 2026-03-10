@@ -1,6 +1,7 @@
+
 # 🌍 Xenohuru Web
 
-> Progressive Web App (PWA) for exploring Tanzania's tourist attractions with interactive maps, real-time weather, and offline support.
+> PWA for exploring Tanzania's tourist attractions with interactive maps, real-time weather, and offline support.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PWA](https://img.shields.io/badge/PWA-ready-5A0FC8.svg)](manifest.json)
@@ -8,41 +9,15 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38bdf8.svg)](https://tailwindcss.com/)
 [![Made in Tanzania](https://img.shields.io/badge/Made%20in-Tanzania-green.svg)](#)
 
-**Live App:** https://xenohuru.netlify.app/ | **Backend API:** [xenohuru-api](https://github.com/Xenohuru/xenohuru-api) | **Sponsor Us:** [Ko-fi](https://ko-fi.com/xenohuru)
+**Live App:** https://x.xenohuru.workers.dev/ | **Backend API:** [xenohuru-api](https://github.com/Xenohuru/xenohuru-api) | **Sponsor Us:** [Ko-fi](https://ko-fi.com/xenohuru)
 
 ---
 
 ## About
 
-Xenohuru Web is a pure HTML/CSS/JavaScript Progressive Web App that connects to the **Xenohuru REST API** (Django). No build step required — open any `.html` file or serve the folder with any static server.
+Xenohuru Web is a pure HTML/CSS/JavaScript PWA connecting to the **Xenohuru REST API** (Django). No build step — open any `.html` file or serve with any static server.
 
-From Kilimanjaro to Zanzibar — explore Tanzania's wonders completely free and open source.
-
----
-
-## Project Structure
-
-```
-xenohuru-web/
-├── index.html           # Home page
-├── attractions.html     # Browse attractions
-├── attraction.html      # Attraction detail with map & weather
-├── regions.html         # Browse regions
-├── about.html           # About & contributors
-├── sponsor.html         # Sponsor the project
-├── css/
-│   └── styles.css       # Custom styles
-├── js/
-│   ├── api.js           # API client
-│   ├── home.js          # Home page logic
-│   ├── attraction.js    # Attraction detail + OSM map
-│   ├── attractions.js   # Attractions listing
-│   ├── about.js         # Contributors loader
-│   └── scripts.js       # Utilities
-├── images/              # Static assets & PWA icons
-├── manifest.json        # PWA manifest
-└── sw.js                # Service worker
-```
+From Kilimanjaro to Zanzibar — explore Tanzania's wonders, free and open source.
 
 ---
 
@@ -52,58 +27,37 @@ xenohuru-web/
 git clone https://github.com/Xenohuru/xenohuru-web.git
 cd xenohuru-web
 
-# Serve with any static server (no build needed)
-npx serve .
-# or
+# Python
 python3 -m http.server 8080
+
+# Node.js
+npx serve .
+
+# PHP
+php -S localhost:8080
+
+# VS Code
+# Install Live Server extension → Right-click index.html → "Open with Live Server"
 ```
 
-**Opens at:** `http://localhost:8080`
-
-> **API:** Configure `js/api.js` to point to your backend API.
+> Configure `js/api.js` to point to your backend API. Opens at `http://localhost:8080`
 
 ---
 
 ## Tech Stack
 
-- **Markup:** Semantic HTML5
-- **Styles:** Tailwind CSS v4 + custom CSS
-- **Scripts:** Vanilla JavaScript (ES2020+)
-- **Maps:** OpenStreetMap (no API key)
-- **Weather:** Open-Meteo API (free)
-- **Gallery:** Splide.js carousel
-- **PWA:** Service Worker + Web App Manifest
-- **Backend:** Xenohuru REST API (Django)
-
----
+HTML5 · Tailwind CSS v4 · Vanilla JS · OpenStreetMap · Open-Meteo · Splide.js · PWA · Django API
 
 ## Features
 
-- Attraction gallery with slideshow
-- Real-time weather data
-- Interactive OpenStreetMap with GPS pins
-- Region browsing & search
-- Share attractions (Web Share API)
-- PWA — installable & works offline
-- Responsive & accessible design
+PWA installable & offline · Attraction gallery · Real-time weather · Interactive maps · Region search · Web Share API · Responsive & accessible
 
 ---
 
 ## Contributing
 
-We welcome contributions! See [CONTRIBUTORS.md](CONTRIBUTORS.md).
-
-1. Fork the repository
-2. Create feature branch: `git checkout -b feature/your-feature`
-3. Commit: `git commit -m "feat: add feature"`
-4. Push & open a Pull Request
+Fork → branch → commit (`feat: ...`) → PR. See [CONTRIBUTORS.md](CONTRIBUTORS.md).
 
 ---
 
-## License
-
-MIT License — Free to use, modify, and distribute. See [LICENSE](LICENSE).
-
----
-
-**🌍 Xenohuru Web — Explore Tanzania | 🇹🇿 Made with love | ❤️ Support us on [Ko-fi](https://ko-fi.com/xenohuru)**
+MIT License | **🇹🇿 Made with love | ❤️ Support us on [Ko-fi](https://ko-fi.com/xenohuru)**
