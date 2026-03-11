@@ -695,8 +695,33 @@ async function init() {
       }
     }
 
-    // Update browser tab title
+    // Update browser tab title and all social/SEO meta tags dynamically
     document.title = `${attraction.name} — Xenohuru`;
+
+    const origin = 'https://x.xenohuru.workers.dev';
+    const canonicalUrl = `${origin}/attraction?slug=${slug}`;
+    const attrImage = attraction.featured_image || `${origin}/images/og-image.jpg`;
+    const attrDesc = attraction.short_description || attraction.description?.slice(0, 160) || attraction.name;
+
+    function setMeta(selector, attr, val) {
+      const el = document.querySelector(selector);
+      if (el) el.setAttribute(attr, val);
+    }
+    function setLinkMeta(rel, val) {
+      let el = document.querySelector(`link[rel="${rel}"]`);
+      if (!el) { el = document.createElement('link'); el.rel = rel; document.head.appendChild(el); }
+      el.href = val;
+    }
+
+    setLinkMeta('canonical', canonicalUrl);
+    setMeta('meta[name="description"]', 'content', attrDesc);
+    setMeta('meta[property="og:title"]', 'content', `${attraction.name} — Xenohuru`);
+    setMeta('meta[property="og:description"]', 'content', attrDesc);
+    setMeta('meta[property="og:url"]', 'content', canonicalUrl);
+    setMeta('meta[property="og:image"]', 'content', attrImage);
+    setMeta('meta[name="twitter:title"]', 'content', `${attraction.name} — Xenohuru`);
+    setMeta('meta[name="twitter:description"]', 'content', attrDesc);
+    setMeta('meta[name="twitter:image"]', 'content', attrImage);
 
     // Load similar attractions (non-blocking — failure is handled inside)
     const regionName = attraction.region?.name ?? attraction.region_name;

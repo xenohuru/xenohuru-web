@@ -54,11 +54,31 @@ function relatedCard(post) {
 function renderPost(post) {
   document.title = `${post.title} -- Xenohuru`;
 
-  const ogTitle = document.querySelector('meta[property="og:title"]');
-  if (ogTitle) ogTitle.setAttribute('content', `${post.title} -- Xenohuru`);
+  const origin = 'https://x.xenohuru.workers.dev';
+  const slug = new URLSearchParams(window.location.search).get('slug') || '';
+  const canonicalUrl = `${origin}/blog-post?slug=${slug}`;
+  const postImage = post.featured_image || `${origin}/images/og-image.jpg`;
+  const postDesc = post.excerpt || post.short_description || post.title;
 
-  const metaDesc = document.querySelector('meta[name="description"]');
-  if (metaDesc) metaDesc.setAttribute('content', post.excerpt || post.short_description || post.title);
+  function setMeta(selector, attr, val) {
+    const el = document.querySelector(selector);
+    if (el) el.setAttribute(attr, val);
+  }
+  function setLinkMeta(rel, val) {
+    let el = document.querySelector(`link[rel="${rel}"]`);
+    if (!el) { el = document.createElement('link'); el.rel = rel; document.head.appendChild(el); }
+    el.href = val;
+  }
+
+  setLinkMeta('canonical', canonicalUrl);
+  setMeta('meta[name="description"]', 'content', postDesc);
+  setMeta('meta[property="og:title"]', 'content', `${post.title} — Xenohuru`);
+  setMeta('meta[property="og:description"]', 'content', postDesc);
+  setMeta('meta[property="og:url"]', 'content', canonicalUrl);
+  setMeta('meta[property="og:image"]', 'content', postImage);
+  setMeta('meta[name="twitter:title"]', 'content', `${post.title} — Xenohuru`);
+  setMeta('meta[name="twitter:description"]', 'content', postDesc);
+  setMeta('meta[name="twitter:image"]', 'content', postImage);
 
   if (breadcrumb) {
     breadcrumb.textContent = post.title;
