@@ -4,20 +4,22 @@
 //           cross-origin, Network-only (with offline JSON) for API
 // ============================================================
 
-const CACHE_NAME = 'xenohuru-v3';
+const CACHE_NAME = 'xenohuru-v4';
 
 // Live API base
 const API_HOST = '159.65.119.182';
 
-// Static assets to pre-cache during install
+// Static assets to pre-cache during install (clean URLs only)
 const PRECACHE_URLS = [
   '/',
-  '/index.html',
-  '/attractions.html',
-  '/attraction.html',
-  '/regions.html',
-  '/about.html',
-  '/sponsor.html',
+  '/attractions',
+  '/regions', 
+  '/blog',
+  '/about',
+  '/contact',
+  '/sponsors',
+  '/weather',
+  '/search',
   '/css/styles.css',
   '/js/scripts.js',
   '/js/home.js',
