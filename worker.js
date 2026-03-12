@@ -49,12 +49,19 @@ export default {
       });
     }
 
-    // Already has a file extension or is root — serve static asset directly
-    if (path === '/' || path.match(/\.[a-zA-Z0-9]+$/)) {
+    // Handle both clean URLs and legacy .html URLs
+    if (path === '/' || path.match(/\.[a-zA-Z0-9]+$/) && !path.endsWith('.html')) {
+      // Root or file with extension (but not .html) — serve directly
       return env.ASSETS.fetch(request);
     }
 
-    // Rewrite clean URL → .html file (e.g. /regions → src/regions.html)
+    // Legacy .html URL → redirect to clean URL
+    if (path.endsWith('.html')) {
+      const cleanPath = path.replace('.html', '') || '/';
+      return Response.redirect(new URL(cleanPath, request.url).toString(), 301);
+    }
+
+    // Clean URL → try as .html file
     const htmlUrl = new URL(request.url);
     htmlUrl.pathname = path + '.html';
     const htmlResponse = await env.ASSETS.fetch(new Request(htmlUrl.toString(), request));
