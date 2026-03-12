@@ -198,8 +198,9 @@ function renderCards(attractions) {
     return;
   }
 
-  // Hide empty state, populate grid
+  // Hide empty state and SEO fallback, populate grid
   emptyState?.classList.add('hidden');
+  document.getElementById('seo-fallback')?.classList.add('hidden');
   grid.innerHTML = attractions.map(buildCard).join('');
 
   // Re-render Lucide icons — buildCard injects data-lucide attributes
