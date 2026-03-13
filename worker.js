@@ -5,7 +5,7 @@
  * 2. Rewrites clean URL requests (e.g. /regions) to their .html asset internally
  */
 
-const DO_API = 'http://159.65.119.182';
+const DO_API = 'http://159.65.119.182:8000';
 
 export default {
   async fetch(request, env) {

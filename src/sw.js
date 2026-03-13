@@ -7,7 +7,7 @@
 const CACHE_NAME = 'xenohuru-v4';
 
 // Live API base
-const API_HOST = '159.65.119.182';
+const API_HOST = '159.65.119.182:8000';
 
 // Static assets to pre-cache during install (clean URLs only)
 const PRECACHE_URLS = [

@@ -13,7 +13,7 @@ Xenohuru is an open-source web application designed as a comprehensive travel gu
 
 ## API Endpoints Reference
 
-The site connects to a backend API (currently available at `http://159.65.119.182/api/v1`) to populate dynamic content.
+The site connects to a backend API (currently available at `http://159.65.119.182:8000/api/v1`) to populate dynamic content.
 
 ### Core Data
 - `GET /regions/`: List all regions.

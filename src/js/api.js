@@ -5,7 +5,7 @@
  * Falls back to MOCK_DATA if API is unreachable (offline / not deployed).
  *
  * Production: API calls go to /api/* (same origin), proxied by the Cloudflare
- *             Worker to http://159.65.119.182 — avoids mixed-content blocking.
+ *             Worker to http://159.65.119.182:8000 — avoids mixed-content blocking.
  * Local dev:  http://localhost:8002 (direct to local Django server)
  * Toggle: set USE_MOCK = true to always use mock data during development.
  */
